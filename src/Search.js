@@ -16,12 +16,6 @@ class Search extends Component {
                                 <h2>Hi. This is Verti.</h2>
                                 <p>It's a free responsive site template by HTML5 UP</p>
                             </div>
-                            <div class="col-5 col-12-medium">
-                                <ul>
-                                    <li><a href="#" class="button large icon fa-arrow-circle-right">Ok let's go</a></li>
-                                    <li><a href="#" class="button alt large icon fa-question-circle">More info</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>

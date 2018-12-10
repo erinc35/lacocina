@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search/Search';
+import Recipes from './Recipes/Recipes';
+import { Route } from "react-router-dom";
 import './App.css';
 
 class App extends Component {
@@ -7,11 +9,9 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          
-          <h2>
-            la cocina
-          </h2>
+          <h2>la cocina</h2>
           <Search />
+          <Route exact path="/" component={Recipes} />
         </header>
       </div>
     );

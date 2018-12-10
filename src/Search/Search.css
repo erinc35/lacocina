@@ -1,0 +1,33 @@
+
+
+.ingredient {
+    display: flex;
+}
+
+.search-wrap{
+    border: 1px solid black;  
+    min-height: 100%;
+    position: relative;
+    /* background: url('./images/board.jpeg'); */
+    
+    /* display: flex; */
+}
+
+.diet-opts {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.kitchen {
+    /* background: url('./images/kitchen2.jpeg'); */
+    background-size: 100% 100%;
+    /* background-attachment: fixed, fixed; */
+	background-position: top left, center center;
+    min-height: 100%;
+    position: relative;
+    display: block;
+    box-sizing: inherit;
+    height: 400px;
+    /* max-width: 100%; */
+    /* height: auto; */
+}

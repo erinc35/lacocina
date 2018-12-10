@@ -1,0 +1,14 @@
+
+
+.ingredient {
+    display: flex;
+}
+
+.search-wrap{
+  border: 1px solid black;  
+}
+
+.diet-opts {
+    display: flex;
+    justify-content: space-evenly;
+}

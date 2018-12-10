@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import './Search.css';
+
 
 
 class Search extends Component {
@@ -8,64 +10,45 @@ class Search extends Component {
     }
     render() { 
         return (  
-            <div>
-                <div id="banner-wrapper">
-                    <div id="banner" class="box container">
-                        <div class="row">
-                            <div class="col-7 col-12-medium">
-                                <h2>Hi. This is Verti.</h2>
-                                <p>It's a free responsive site template by HTML5 UP</p>
+            <div className="search-wrap">
+                <div className=''>
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Ingredient</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" placeholder="Ingredient"/>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div id="features-wrapper">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-4 col-12-medium">
-									<section class="box feature">
-                                    <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-                                    <div class="inner">
-                                        <header>
-                                            <h2>Put something here</h2>
-                                            <p>Maybe here as well I think</p>
-                                        </header>
-                                        <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
+                        <fieldset class="form-group">
+                            <div class="row">
+                                <legend class="col-form-label col-sm-2 pt-0">Diet Options</legend>
+                                <div class="col-sm-10 diet-opts">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="gridRadios"/>
+                                        <label class="form-check-label" >Low-carb</label>
                                     </div>
-                                </section>
-
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="gridRadios" />
+                                        <label class="form-check-label" >High-protein</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="gridRadios" />
+                                        <label class="form-check-label" >High-fiber</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="gridRadios" />
+                                        <label class="form-check-label" >Low-sodium</label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-4 col-12-medium">
-									<section class="box feature">
-                                    <a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-                                    <div class="inner">
-                                        <header>
-                                            <h2>An interesting title</h2>
-                                            <p>This is also an interesting subtitle</p>
-                                        </header>
-                                        <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                                    </div>
-                                </section>
-
-                            </div>
-                            <div class="col-4 col-12-medium">
-
-									<section class="box feature">
-                                    <a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-                                    <div class="inner">
-                                        <header>
-                                            <h2>Oh, and finally ...</h2>
-                                            <p>Here's another intriguing subtitle</p>
-                                        </header>
-                                        <p>Phasellus quam turpis, feugiat sit amet in, hendrerit in lectus. Praesent sed semper amet bibendum tristique fringilla.</p>
-                                    </div>
-                                </section>
-
+                        </fieldset>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Search Recipe</button>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </form>
+                </div> 
             </div>
         );
     }

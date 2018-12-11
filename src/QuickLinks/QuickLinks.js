@@ -4,6 +4,8 @@ import cookie from '../images/cookie.jpeg';
 import shrimp from '../images/shrimp.jpeg';
 import lamb from '../images/lamb.jpeg';
 import salad from '../images/salad.jpeg';
+import chicken from '../images/chicken.jpeg';
+
 
 
 import './QuickLinks.css';
@@ -38,7 +40,10 @@ class QuickLinks extends Component {
                     <img className="icon" src={salad} />
                     <span>Salad Recipes</span>
                 </a>
-
+                <a target="_blank" href="https://www.twitter.com/ErincEmer" className="quicklink">
+                    <img className="icon" src={chicken} />
+                    <span>Chicken Recipes</span>
+                </a>
                         
             </div>
          );

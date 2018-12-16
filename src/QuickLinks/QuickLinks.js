@@ -34,35 +34,35 @@ class QuickLinks extends Component {
     render() { 
         return ( 
             <div className='quicklinks'>
-                <a 
+                <div  
                     href="#" 
                     className="quicklink"
                     onClick={this.fetchQuickLink}
                 >
-                    <img className="icon" src={bread} />
+                    <img alt='bread' className="icon" src={bread} />
                     <span>Bread Recipes</span>
-                </a>
-                <a href="#" className="quicklink">
-                    <img className="icon" src={cookie} />
+                </div>
+                <div  href="#" className="quicklink">
+                    <img alt='cookie' className="icon" src={cookie} />
                     <span>Cookie Recipes</span>
                     
-                </a>
-                <a href="#" className="quicklink">
-                    <img className="icon" src={shrimp} />
+                </div>
+                <div  href="#" className="quicklink">
+                    <img alt='shrimp' className="icon" src={shrimp} />
                     <span>Shrimp Recipes</span>
-                </a>
-                <a href="#" className="quicklink">
-                    <img className="icon" src={lamb} />
+                </div>
+                <div  href="#" className="quicklink">
+                    <img alt='lamb' className="icon" src={lamb} />
                     <span>Lamb Recipes</span>                    
-                </a>
-                <a href="#" className="quicklink">
-                    <img className="icon" src={salad} />
+                </div>
+                <div href="#" className="quicklink">
+                    <img alt='salad' className="icon" src={salad} />
                     <span>Salad Recipes</span>
-                </a>
-                <a href="#" className="quicklink">
-                    <img className="icon" src={chicken} />
+                </div>
+                <div  href="#" className="quicklink">
+                    <img alt='chicken' className="icon" src={chicken} />
                     <span>Chicken Recipes</span>
-                </a>
+                </div>
                         
             </div>
          );

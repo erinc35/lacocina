@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import bread from '../images/bread.jpeg';
 import cookie from '../images/cookie.jpeg';
@@ -9,6 +10,9 @@ import './QuickLinks.css';
 import axios from 'axios';
 
 
+let app_id = process.env.REACT_APP_YOUR_APP_ID;
+let app_key = process.env.REACT_APP_YOUR_APP_KEY;
+
 
 class QuickLinks extends Component {
     constructor(props) {
@@ -18,9 +22,10 @@ class QuickLinks extends Component {
          }
     }
 
+
     fetchQuickLink = () => {
         axios
-            .get("")
+            .get(`https://api.edamam.com/search?q=chicken&app_id=${app_id}&app_key=${app_key}&from=0&to=3&calories=591-722&health=alcohol-free`)
             .then(response => {
                 console.log(response.data.hits)
                 this.setState({ recipes: response });
@@ -28,7 +33,6 @@ class QuickLinks extends Component {
             .catch(err => {
                 console.log(err);
             });
-        // console.log(this.state)
     }
 
     render() { 

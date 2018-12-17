@@ -23,9 +23,10 @@ class QuickLinks extends Component {
     }
 
 
-    fetchQuickLink = () => {
+    fetchQuickLink = e => {
+        let ing = e.target.alt;
         axios
-            .get(`https://api.edamam.com/search?q=chicken&app_id=${app_id}&app_key=${app_key}&from=0&to=3&calories=591-722&health=alcohol-free`)
+            .get(`https://api.edamam.com/search?q=${ing}&app_id=${app_id}&app_key=${app_key}`)
             .then(response => {
                 console.log(response.data.hits)
                 this.setState({ recipes: response });

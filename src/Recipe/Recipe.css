@@ -1,0 +1,7 @@
+.recipe-card {
+    margin-top: 2%;
+    width: 200px;;
+    border-radius: 4%;
+    /* max-width: 20%; */
+    border: 1px solid black;
+}

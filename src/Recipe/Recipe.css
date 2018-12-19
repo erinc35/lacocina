@@ -1,7 +1,13 @@
 .recipe-card {
     margin-top: 2%;
-    width: 200px;;
+    width: 180px;;
     border-radius: 4%;
     /* max-width: 20%; */
     border: 1px solid black;
+    min-height: 240px;
+}
+
+.recipe-img {
+    width: 100%;
+    border-radius: 4%;    
 }

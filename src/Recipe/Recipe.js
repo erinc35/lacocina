@@ -9,11 +9,13 @@ class Recipe extends Component {
     }
 
     render() { 
+        let data = this.props.recipeData;
         // console.log(this.props.recipeData)
         return (  
             <div className='recipe-card'>
-                <img src={this.props.recipeData.image} alt="" className='recipe-img'/>
-                <p>{this.props.recipeData.label}</p>            </div>
+                <img src={data.image} alt={data.label} className='recipe-img'/>
+                <p className='recipe-name'>{data.label}</p>            
+            </div>
         );
     }
 }

@@ -7,8 +7,24 @@ import './Search.css';
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            ingredients: "",
+            low_carb: false,
+            high_protein: false,
+            high_fiber: false,
+            low_sodium: false
+         }
     }
+
+    handleInput = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+        console.log(this.state)
+    }
+
+
+
     render() { 
         return (  
             <div>
@@ -17,7 +33,7 @@ class Search extends Component {
                             <div className="form-group row">
                                 <label className="col-sm-2 col-form-label">Ingredient</label>
                                 <div className="col-sm-10">
-                                    <input className="form-control" placeholder="Ingredient"/>
+                                <input onChange={this.handleInput} className="form-control" placeholder="Ingredient" name='ingredients'/>
                                 </div>
                             </div>
                             <fieldset className="form-group">

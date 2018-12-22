@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import QuickLinks from '../QuickLinks/QuickLinks';
 import './Search.css';
+import axios from 'axios';
+
+
+let app_id = process.env.REACT_APP_YOUR_APP_ID;
+let app_key = process.env.REACT_APP_YOUR_APP_KEY;
 
 
 
@@ -20,7 +25,22 @@ class Search extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-        console.log(this.state)
+    }
+
+    searchRecipe = e => {
+        e.preventDefault();
+        const ingInput = this.state.ingredients;
+        const api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`
+        
+        axios.get(api)
+            .then(response => {
+                // console.log(response)
+                this.setState({ recipes: response.data.hits });
+                console.log(this.state.recipes)
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
 
@@ -29,7 +49,7 @@ class Search extends Component {
         return (  
             <div>
                 <div className="search-wrap">
-                        <form>
+                        <form onSubmit={this.searchRecipe}>
                             <div className="form-group row">
                                 <label className="col-sm-2 col-form-label">Ingredient</label>
                                 <div className="col-sm-10">

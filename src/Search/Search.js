@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import QuickLinks from '../QuickLinks/QuickLinks';
+import Recipe from '../Recipe/Recipe';
 import './Search.css';
 import axios from 'axios';
 
@@ -17,7 +18,8 @@ class Search extends Component {
             low_carb: false,
             high_protein: false,
             high_fiber: false,
-            low_sodium: false
+            low_sodium: false,
+            recipes: []
          }
     }
 
@@ -87,6 +89,13 @@ class Search extends Component {
                         </form>
                 </div>
                 <QuickLinks />
+                <div className='recipes'>
+                    {this.state.recipes ? this.state.recipes.map(recipe => {
+                        console.log(recipe)
+                        return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)} />;
+                    }) : <div></div>
+                    }
+                </div>
             </div>
         );
     }

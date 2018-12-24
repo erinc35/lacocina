@@ -14,4 +14,12 @@
 
 .recipe-name{
     text-align: center;
+    margin-bottom: 1%;
+}
+
+.recipe-source{
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+    font-size: 0.9rem;
 }

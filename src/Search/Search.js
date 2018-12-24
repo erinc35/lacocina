@@ -19,7 +19,8 @@ class Search extends Component {
             high_protein: false,
             high_fiber: false,
             low_sodium: false,
-            recipes: []
+            recipes: [],
+            not_found: false
          }
     }
 
@@ -36,9 +37,9 @@ class Search extends Component {
         
         axios.get(api)
             .then(response => {
-                // console.log(response)
-                this.setState({ recipes: response.data.hits });
-                console.log(this.state.recipes)
+                response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false}) : 
+                    this.setState({ not_found: true });
+                console.log(this.state)
             })
             .catch(err => {
                 console.log(err);
@@ -90,10 +91,12 @@ class Search extends Component {
                 </div>
                 <QuickLinks />
                 <div className='recipes'>
-                    {this.state.recipes ? this.state.recipes.map(recipe => {
+                    {this.state.not_found === false ? this.state.recipes.map(recipe => {
                         console.log(recipe)
                         return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)} />;
-                    }) : <div></div>
+                    }) : <div className='not-found'>
+                        <p className='not-found-text'>Sorry, there is nothing cook with {this.state.ingredients}</p>
+                    </div>
                     }
                 </div>
             </div>

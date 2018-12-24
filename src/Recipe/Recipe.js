@@ -14,7 +14,8 @@ class Recipe extends Component {
         return (  
             <div className='recipe-card'>
                 <img src={data.image} alt={data.label} className='recipe-img'/>
-                <p className='recipe-name'>{data.label}</p>            
+                <p className='recipe-name'>{data.label}</p>
+                <p className='recipe-source'>by {data.source}</p>                
             </div>
         );
     }

@@ -24,6 +24,12 @@ class Search extends Component {
          }
     }
 
+    // componentDidMount() {
+    //     this.setState({
+    //         not_found: false
+    //     })
+    // }
+
     handleInput = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -32,6 +38,8 @@ class Search extends Component {
 
     searchRecipe = e => {
         e.preventDefault();
+        // this.setState({ recipes: []})
+        // this.forceUpdate()
         const ingInput = this.state.ingredients;
         const api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`
         
@@ -39,7 +47,7 @@ class Search extends Component {
             .then(response => {
                 response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false}) : 
                     this.setState({ not_found: true });
-                console.log(this.state)
+                // console.log(this.state)W
             })
             .catch(err => {
                 console.log(err);

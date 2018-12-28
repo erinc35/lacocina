@@ -15,13 +15,15 @@ class Search extends Component {
         super(props);
         this.state = { 
             ingredients: "",
-            low_carb: false,
-            high_protein: false,
-            high_fiber: false,
-            low_sodium: false,
             recipes: [],
             not_found: false, 
-            searched: ''
+            searched: '',
+            diets: {
+                low_carb: false,
+                high_protein: false,
+                high_fiber: false,
+                low_sodium: false
+            }
          }
     }
 
@@ -43,20 +45,36 @@ class Search extends Component {
         // this.forceUpdate()
         const ingInput = this.state.ingredients;
         this.setState({ searched: this.state.ingredients })
-        const api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`
+        let api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`;
+
+        if (this.state.low_carb || this.state.high_protein || this.state.high_fiber || this.state.low_sodium) {
+            api = api + '&diet='
+        }
+
+        if(this.state.low_carb) {
+            api = api + 'low-carb,'
+            console.log(api)
+        }
+        // else if(this.state.high_protein) {
+        //     api = api + ''
+        // }
         
         axios.get(api)
             .then(response => {
                 response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false}) : 
                     this.setState({ not_found: true });
-                // console.log(this.state)W
+                // console.log(this.state)
             })
             .catch(err => {
                 console.log(err);
             });
     }
 
-
+    dietCheck = e => {
+        let diets = {...this.state.diets}
+        this.setState({ diets: { ...this.state.diets, [e.target.name]: !this.state.diets[e.target.name] }})
+        console.log(this.state.diets.low_carb)
+    }
 
     render() { 
         return (  
@@ -74,19 +92,19 @@ class Search extends Component {
                                     <legend className="col-form-label col-sm-2 pt-0">Diet Options</legend>
                                     <div className="col-sm-10 diet-opts">
                                         <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" name="gridRadios"/>
+                                            <input className="form-check-input" type="checkbox" name="low_carb" value={this.state.low_carb} onClick={this.dietCheck}/>
                                             <label className="form-check-label" >Low-carb</label>
                                         </div>
                                         <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" name="gridRadios" />
+                                            <input className="form-check-input" type="checkbox" name="gridRad;'ios" value={this.state.high_protein}/>
                                             <label className="form-check-label" >High-protein</label>
                                         </div>
                                         <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" name="gridRadios" />
+                                            <input className="form-check-input" type="checkbox" name="gridRadios" value={this.state.high_fiber}/>
                                             <label className="form-check-label" >High-fiber</label>
                                         </div>
                                         <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" name="gridRadios" />
+                                            <input className="form-check-input" type="checkbox" name="gridRadios" value={this.state.low_sodium}/>
                                             <label className="form-check-label" >Low-sodium</label>
                                         </div>
                                     </div>

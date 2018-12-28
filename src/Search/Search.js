@@ -20,7 +20,8 @@ class Search extends Component {
             high_fiber: false,
             low_sodium: false,
             recipes: [],
-            not_found: false
+            not_found: false, 
+            searched: ''
          }
     }
 
@@ -41,6 +42,7 @@ class Search extends Component {
         // this.setState({ recipes: []})
         // this.forceUpdate()
         const ingInput = this.state.ingredients;
+        this.setState({ searched: this.state.ingredients })
         const api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`
         
         axios.get(api)
@@ -103,7 +105,7 @@ class Search extends Component {
                         // console.log(recipe)
                         return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)} />;
                     }) : <div className='not-found'>
-                        <p className='not-found-text'>Sorry, there is nothing cook with {this.state.ingredients}.</p>
+                        <p className='not-found-text'>Sorry, there is nothing cook with {this.state.searched}.</p>
                     </div>
                     }
                 </div>

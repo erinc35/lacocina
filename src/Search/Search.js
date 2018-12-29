@@ -3,6 +3,7 @@ import QuickLinks from '../QuickLinks/QuickLinks';
 import Recipe from '../Recipe/Recipe';
 import './Search.css';
 import axios from 'axios';
+import $ from 'jquery';
 
 
 let app_id = process.env.REACT_APP_YOUR_APP_ID;
@@ -52,7 +53,7 @@ class Search extends Component {
         }
 
         if(this.state.low_carb) {
-            api = api + 'low-carb,'
+            api = api + 'low-carb'
             console.log(api)
         }
         // else if(this.state.high_protein) {
@@ -71,10 +72,30 @@ class Search extends Component {
     }
 
     dietCheck = e => {
+        console.log(this.state.diets.low_carb)
         let diets = {...this.state.diets}
         this.setState({ diets: { ...this.state.diets, [e.target.name]: !this.state.diets[e.target.name] }})
-        console.log(this.state.diets.low_carb)
     }
+
+    componentDidMount() {
+        $("input:checkbox").on('click', function () {
+            // in the handler, 'this' refers to the box clicked on
+            var $box = $(this);
+            console.log("ssss")
+            if ($box.is(":checked")) {
+                // the name of the box is retrieved using the .attr() method
+                // as it is assumed and expected to be immutable
+                var group = "input:checkbox[alt='" + $box.attr("alt") + "']";
+                // the checked state of the group/box on the other hand will change
+                // and the current value is retrieved using .prop() method
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            } else {
+                $box.prop("checked", false);
+            }
+        });
+    }
+    
 
     render() { 
         return (  
@@ -92,19 +113,19 @@ class Search extends Component {
                                     <legend className="col-form-label col-sm-2 pt-0">Diet Options</legend>
                                     <div className="col-sm-10 diet-opts">
                                         <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" name="low_carb" value={this.state.low_carb} onClick={this.dietCheck}/>
+                                            <input className="form-check-input" alt="box" type="checkbox" name="low_carb" value={this.state.low_carb} onClick={this.dietCheck}/>
                                             <label className="form-check-label" >Low-carb</label>
                                         </div>
                                         <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" name="gridRad;'ios" value={this.state.high_protein}/>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="high_protein" value={this.state.high_protein} onClick={this.dietCheck}/>
                                             <label className="form-check-label" >High-protein</label>
                                         </div>
                                         <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" name="gridRadios" value={this.state.high_fiber}/>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="high_fiber" value={this.state.high_fiber} onClick={this.dietCheck}/>
                                             <label className="form-check-label" >High-fiber</label>
                                         </div>
                                         <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" name="gridRadios" value={this.state.low_sodium}/>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="low_sodium" value={this.state.low_sodium} onClick={this.dietCheck}/>
                                             <label className="form-check-label" >Low-sodium</label>
                                         </div>
                                     </div>

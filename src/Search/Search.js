@@ -48,11 +48,11 @@ class Search extends Component {
         this.setState({ searched: this.state.ingredients })
         let api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`;
 
-        if (this.state.low_carb || this.state.high_protein || this.state.high_fiber || this.state.low_sodium) {
+        if (this.state.diets.low_carb || this.state.diets.high_protein || this.state.diets.high_fiber || this.state.diets.low_sodium) {
             api = api + '&diet='
         }
-
-        if(this.state.low_carb) {
+        console.log(this.state.diets.low_carb)
+        if(this.state.diets.low_carb === true) {
             api = api + 'low-carb'
             console.log(api)
         }
@@ -72,16 +72,23 @@ class Search extends Component {
     }
 
     dietCheck = e => {
-        console.log(this.state.diets.low_carb)
-        let diets = {...this.state.diets}
-        this.setState({ diets: { ...this.state.diets, [e.target.name]: !this.state.diets[e.target.name] }})
+        // let diets = {...this.state.diets}
+        console.log(this.state)
+        let diet = e.target.name
+        // let value = e.target.value        
+        this.setState({ diets: { ...this.state.diets, [diet]: !this.state.diets[diet] }})
+        // this.setState(prevState => ({
+
+        //     diets: { ...this.state.diets, [diet]: !prevState.diets[diet] }
+        // }) )
     }
 
     componentDidMount() {
+        // console.log(this.state.diets.low_carb)
+        
         $("input:checkbox").on('click', function () {
             // in the handler, 'this' refers to the box clicked on
             var $box = $(this);
-            console.log("ssss")
             if ($box.is(":checked")) {
                 // the name of the box is retrieved using the .attr() method
                 // as it is assumed and expected to be immutable
@@ -113,19 +120,19 @@ class Search extends Component {
                                     <legend className="col-form-label col-sm-2 pt-0">Diet Options</legend>
                                     <div className="col-sm-10 diet-opts">
                                         <div className="form-check">
-                                            <input className="form-check-input" alt="box" type="checkbox" name="low_carb" value={this.state.low_carb} onClick={this.dietCheck}/>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="low_carb" onChange={this.dietCheck} defaultChecked={this.state.diets.low_carb}/>
                                             <label className="form-check-label" >Low-carb</label>
                                         </div>
                                         <div className="form-check">
-                                        <input className="form-check-input" alt="box" type="checkbox" name="high_protein" value={this.state.high_protein} onClick={this.dietCheck}/>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="high_protein" value={this.state.high_protein} onChange={this.dietCheck}/>
                                             <label className="form-check-label" >High-protein</label>
                                         </div>
                                         <div className="form-check">
-                                        <input className="form-check-input" alt="box" type="checkbox" name="high_fiber" value={this.state.high_fiber} onClick={this.dietCheck}/>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="high_fiber" value={this.state.high_fiber} onChange={this.dietCheck}/>
                                             <label className="form-check-label" >High-fiber</label>
                                         </div>
                                         <div className="form-check">
-                                        <input className="form-check-input" alt="box" type="checkbox" name="low_sodium" value={this.state.low_sodium} onClick={this.dietCheck}/>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="low_sodium" value={this.state.low_sodium} onChange={this.dietCheck}/>
                                             <label className="form-check-label" >Low-sodium</label>
                                         </div>
                                     </div>

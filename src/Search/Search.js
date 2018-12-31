@@ -47,19 +47,23 @@ class Search extends Component {
         const ingInput = this.state.ingredients;
         this.setState({ searched: this.state.ingredients })
         let api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`;
-
-        if (this.state.diets.low_carb || this.state.diets.high_protein || this.state.diets.high_fiber || this.state.diets.low_sodium) {
-            api = api + '&diet='
+        
+        if (this.state.diets.low_carb === true || this.state.diets.high_protein === true || this.state.diets.high_fiber === true || this.state.diets.low_sodium) {
+            let inputs = Array.from(e.target.getElementsByClassName('form-check-input'))   
+            let checkedDiet = inputs.filter(input => input.checked)[0].name;
+            console.log(checkedDiet)
+            api = api + `&diet=${checkedDiet}`
         }
-        console.log(this.state.diets.low_carb)
-        if(this.state.diets.low_carb === true) {
-            api = api + 'low-carb'
             console.log(api)
-        }
+        // if(this.state.diets.low_carb === true) {
+        //     api = api + 'low-carb'
+        // }
         // else if(this.state.high_protein) {
         //     api = api + ''
         // }
-        
+        // console.log(e.target.children[1].children[0])
+        // console.log(e.target.getElementsByClassName('form-check'))    
+
         axios.get(api)
             .then(response => {
                 response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false}) : 
@@ -73,10 +77,10 @@ class Search extends Component {
 
     dietCheck = e => {
         // let diets = {...this.state.diets}
-        console.log(this.state)
-        let diet = e.target.name
+        // console.log(e.target.prop("checked"))
+        // let diet = e.target.name
         // let value = e.target.value        
-        this.setState({ diets: { ...this.state.diets, [diet]: !this.state.diets[diet] }})
+        // this.setState({ diets: { ...this.state.diets, [diet]: !this.state.diets[diet] }})
         // this.setState(prevState => ({
 
         //     diets: { ...this.state.diets, [diet]: !prevState.diets[diet] }
@@ -85,20 +89,39 @@ class Search extends Component {
 
     componentDidMount() {
         // console.log(this.state.diets.low_carb)
+        // console.log('low_carb at first',this.state.diets.low_carb)
         
-        $("input:checkbox").on('click', function () {
+        $("input:checkbox").on('click', (e) => {
             // in the handler, 'this' refers to the box clicked on
-            var $box = $(this);
-            if ($box.is(":checked")) {
+            let $box = e.target;
+            let diets = {...this.state.diets};
+            let diet = e.target.name;
+            
+            // console.log(e.target.alt)
+            // if ($box.is(":checked")) {
+            if ($box.checked) {
+            
                 // the name of the box is retrieved using the .attr() method
                 // as it is assumed and expected to be immutable
-                var group = "input:checkbox[alt='" + $box.attr("alt") + "']";
+                // var group = "input:checkbox[alt='" + $box.attr("alt") + "']";
+                let group = "input:checkbox[alt='" + $box.alt + "']";
+                
                 // the checked state of the group/box on the other hand will change
                 // and the current value is retrieved using .prop() method
-                $(group).prop("checked", false);
-                $box.prop("checked", true);
+                $(group).checked = false;
+                $box.checked = true;
+                this.setState({ diets: { ...this.state.diets, [diet]: true } })                
+                // console.log('yes')
+                // console.log(this.state.diets.low_carb)
+
             } else {
-                $box.prop("checked", false);
+                // $box.prop("checked", false);
+                $box.checked = false;
+                this.setState({ diets: { ...this.state.diets, [diet]: false } })                
+                // console.log('no')
+                // console.log(this.state.diets.low_carb)
+                
+                
             }
         });
     }
@@ -120,7 +143,7 @@ class Search extends Component {
                                     <legend className="col-form-label col-sm-2 pt-0">Diet Options</legend>
                                     <div className="col-sm-10 diet-opts">
                                         <div className="form-check">
-                                        <input className="form-check-input" alt="box" type="checkbox" name="low_carb" onChange={this.dietCheck} defaultChecked={this.state.diets.low_carb}/>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="low_carb" onClick={this.dietCheck} defaultChecked={this.state.diets.low_carb}/>
                                             <label className="form-check-label" >Low-carb</label>
                                         </div>
                                         <div className="form-check">

@@ -22,8 +22,8 @@ class Search extends Component {
             diets: {
                 low_carb: false,
                 high_protein: false,
-                high_fiber: false,
-                low_sodium: false
+                balanced: false,
+                low_fat: false
             }
          }
     }
@@ -36,8 +36,6 @@ class Search extends Component {
 
     searchRecipe = e => {
         e.preventDefault();
-        // this.setState({ recipes: []})
-        // this.forceUpdate()
         const ingInput = this.state.ingredients;
         this.setState({ searched: this.state.ingredients })
         let api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`;
@@ -168,12 +166,12 @@ class Search extends Component {
                                             <label className="form-check-label" >High-protein</label>
                                         </div>
                                         <div className="form-check">
-                                        <input className="form-check-input" alt="box" type="checkbox" name="high_fiber" value={this.state.high_fiber} onChange={this.dietCheck}/>
-                                            <label className="form-check-label" >High-fiber</label>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="balanced" value={this.state.balanced} onChange={this.dietCheck}/>
+                                            <label className="form-check-label" >Balanced</label>
                                         </div>
                                         <div className="form-check">
-                                        <input className="form-check-input" alt="box" type="checkbox" name="low_sodium" value={this.state.low_sodium} onChange={this.dietCheck}/>
-                                            <label className="form-check-label" >Low-sodium</label>
+                                        <input className="form-check-input" alt="box" type="checkbox" name="low_fat" value={this.state.low_fat} onChange={this.dietCheck}/>
+                                            <label className="form-check-label" >Low-fat</label>
                                         </div>
                                     </div>
                                 </div>

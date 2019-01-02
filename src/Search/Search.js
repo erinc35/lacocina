@@ -102,23 +102,46 @@ class Search extends Component {
                 
                 // the checked state of the group/box on the other hand will change
                 // and the current value is retrieved using .prop() method
-                $(group).checked = false;
+                $(group)[0].checked = false;
+                $(group)[1].checked = false;
+                $(group)[2].checked = false;
+                $(group)[3].checked = false;
+                
                 $box.checked = true;
+                
                 this.setState({ diets: { ...this.state.diets, [diet]: true } })                
-                // console.log('yes')
                 // console.log(this.state.diets.low_carb)
 
             } else {
                 // $box.prop("checked", false);
                 $box.checked = false;
-                this.setState({ diets: { ...this.state.diets, [diet]: false } })                
-                // console.log('no')
-                // console.log(this.state.diets.low_carb)
+                // console.log($(group))
                 
+                this.setState({ diets: { ...this.state.diets, [diet]: false } })                
                 
             }
         });
     }
+
+    // componentDidMount() {
+    //     $("input:checkbox").on('click', (e) =>  {
+    //         // in the handler, 'this' refers to the box clicked on
+    //         let $box = e.target;
+    //         // var $box = $(this);
+    //         if ($box.checked) {
+    //             // the name of the box is retrieved using the .attr() method
+    //             // as it is assumed and expected to be immutable
+    //             var group = "input:checkbox[alt='" + $box.alt + "']";
+    //             // the checked state of the group/box on the other hand will change
+    //             // and the current value is retrieved using .prop() method
+    //             $(group).checked = false;
+    //             $box.checked = true;
+    //         } else {
+    //             $box.checked = false;
+    //         }
+    //     });
+    // }
+    
     
 
     render() { 

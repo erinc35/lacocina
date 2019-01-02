@@ -28,12 +28,6 @@ class Search extends Component {
          }
     }
 
-    // componentDidMount() {
-    //     this.setState({
-    //         not_found: false
-    //     })
-    // }
-
     handleInput = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -50,7 +44,7 @@ class Search extends Component {
         
         if (this.state.diets.low_carb === true || this.state.diets.high_protein === true || this.state.diets.high_fiber === true || this.state.diets.low_sodium) {
             let inputs = Array.from(e.target.getElementsByClassName('form-check-input'))   
-            let checkedDiet = inputs.filter(input => input.checked)[0].name;
+            let checkedDiet = inputs.filter(input => input.checked)[0].name.replace(/_/g, '-');
             console.log(checkedDiet)
             api = api + `&diet=${checkedDiet}`
         }

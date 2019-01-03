@@ -23,6 +23,7 @@
     /* width: 80%; */
     margin-top: 3%;
     color: darkslategray;
+    font-size: 0.9em;
 }
 
 .icon {
@@ -36,4 +37,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between
+}
+
+
+@media (max-width: 780px) {
+
+    .quicklink span {
+        font-size: 0.8em;
+    }
+    .icon {
+        width: 80px;
+    }
 }

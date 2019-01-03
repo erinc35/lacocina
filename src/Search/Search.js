@@ -43,24 +43,13 @@ class Search extends Component {
         if (this.state.diets.low_carb === true || this.state.diets.high_protein === true || this.state.diets.high_fiber === true || this.state.diets.low_sodium) {
             let inputs = Array.from(e.target.getElementsByClassName('form-check-input'))   
             let checkedDiet = inputs.filter(input => input.checked)[0].name.replace(/_/g, '-');
-            console.log(checkedDiet)
             api = api + `&diet=${checkedDiet}`
         }
-            console.log(api)
-        // if(this.state.diets.low_carb === true) {
-        //     api = api + 'low-carb'
-        // }
-        // else if(this.state.high_protein) {
-        //     api = api + ''
-        // }
-        // console.log(e.target.children[1].children[0])
-        // console.log(e.target.getElementsByClassName('form-check'))    
 
         axios.get(api)
             .then(response => {
                 response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false}) : 
                     this.setState({ not_found: true });
-                // console.log(this.state)
             })
             .catch(err => {
                 console.log(err);
@@ -68,79 +57,43 @@ class Search extends Component {
     }
 
     dietCheck = e => {
-        // let diets = {...this.state.diets}
-        // console.log(e.target.prop("checked"))
-        // let diet = e.target.name
-        // let value = e.target.value        
-        // this.setState({ diets: { ...this.state.diets, [diet]: !this.state.diets[diet] }})
-        // this.setState(prevState => ({
-
-        //     diets: { ...this.state.diets, [diet]: !prevState.diets[diet] }
-        // }) )
-    }
-
-    componentDidMount() {
-        // console.log(this.state.diets.low_carb)
-        // console.log('low_carb at first',this.state.diets.low_carb)
-        
         $("input:checkbox").on('click', (e) => {
             // in the handler, 'this' refers to the box clicked on
             let $box = e.target;
-            let diets = {...this.state.diets};
+            let diets = { ...this.state.diets };
             let diet = e.target.name;
-            
-            // console.log(e.target.alt)
+
+
             // if ($box.is(":checked")) {
             if ($box.checked) {
-            
+
                 // the name of the box is retrieved using the .attr() method
                 // as it is assumed and expected to be immutable
                 // var group = "input:checkbox[alt='" + $box.attr("alt") + "']";
                 let group = "input:checkbox[alt='" + $box.alt + "']";
-                
+
                 // the checked state of the group/box on the other hand will change
                 // and the current value is retrieved using .prop() method
                 $(group)[0].checked = false;
                 $(group)[1].checked = false;
                 $(group)[2].checked = false;
                 $(group)[3].checked = false;
-                
+
                 $box.checked = true;
-                
-                this.setState({ diets: { ...this.state.diets, [diet]: true } })                
+
+                this.setState({ diets: { ...this.state.diets, [diet]: true } })
                 // console.log(this.state.diets.low_carb)
 
             } else {
                 // $box.prop("checked", false);
                 $box.checked = false;
                 // console.log($(group))
-                
-                this.setState({ diets: { ...this.state.diets, [diet]: false } })                
-                
+
+                this.setState({ diets: { ...this.state.diets, [diet]: false } })
+
             }
         });
     }
-
-    // componentDidMount() {
-    //     $("input:checkbox").on('click', (e) =>  {
-    //         // in the handler, 'this' refers to the box clicked on
-    //         let $box = e.target;
-    //         // var $box = $(this);
-    //         if ($box.checked) {
-    //             // the name of the box is retrieved using the .attr() method
-    //             // as it is assumed and expected to be immutable
-    //             var group = "input:checkbox[alt='" + $box.alt + "']";
-    //             // the checked state of the group/box on the other hand will change
-    //             // and the current value is retrieved using .prop() method
-    //             $(group).checked = false;
-    //             $box.checked = true;
-    //         } else {
-    //             $box.checked = false;
-    //         }
-    //     });
-    // }
-    
-    
 
     render() { 
         return (  

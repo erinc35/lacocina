@@ -102,8 +102,9 @@ class Search extends Component {
                         <form onSubmit={this.searchRecipe}>
                             <div className="form-group row">
                                 <label className="col-sm-2 col-form-label">Ingredient</label>
-                                <div className="col-sm-10">
-                                <input onChange={this.handleInput} className="form-control" placeholder="Ingredient" name='ingredients'/>
+                                <div className="col-sm-10 search-input-wrap">
+                                    <input onChange={this.handleInput} className="form-control" placeholder="Ingredient" name='ingredients'/>
+                                    <button type="submit" className="btn btn-primary">Search</button>                                    
                                 </div>
                             </div>
                             <fieldset className="form-group">
@@ -131,7 +132,6 @@ class Search extends Component {
                             </fieldset>
                             <div className="form-group row">
                                 <div className="col-sm-10">
-                                    <button type="submit" className="btn btn-primary">Search Recipe</button>
                                 </div>
                             </div>
                         </form>

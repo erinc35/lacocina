@@ -51,3 +51,16 @@
 }
 
 
+@media (max-width: 640px) {
+
+    .quicklinks{
+        display: flex;
+        overflow: scroll;
+        justify-content: flex-start;
+    }
+
+    .quicklink{
+        display: flex;
+        text-align: center;
+    }
+}

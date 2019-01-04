@@ -1,4 +1,8 @@
-
+.search-header {
+    background-image: url('../images/board.jpeg');
+    background-size: cover;
+    background-position: center center;
+}
 
 .ingredient {
     display: flex;
@@ -8,6 +12,7 @@
     /* border: 1px solid black;   */
     min-height: 100%;
     position: relative;
+    padding: 2%;
     /* background: url('./images/board.jpeg'); */
     
     /* display: flex; */
@@ -41,9 +46,14 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: 0 2%;
 }
 
+.form-label {
+    text-shadow: 1px 1px white;
+    font-weight: bold;    
+}
 .not-found {
     width: 100%;
     background: url('../images/kitchen3.jpeg');

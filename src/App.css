@@ -1,2 +1,7 @@
+.App {
+    background-color: white;
+}
 
-
+.App-header h2 {
+    padding: 2%;
+}

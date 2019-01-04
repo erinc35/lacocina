@@ -9,7 +9,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h2>la cocina</h2>
           <Search />
           <Route exact path="/" component={Recipes} />
         </header>

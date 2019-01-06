@@ -9,7 +9,7 @@
 }
 
 .search-wrap{
-    /* border: 1px solid black;   */
+    font-family: "DeLaFuente";
     min-height: 100%;
     position: relative;
     padding: 2%;
@@ -48,6 +48,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 2%;
+    font-family: "Journal";
+    font-size: 1.9rem;
 }
 
 .form-label {

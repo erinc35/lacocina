@@ -138,7 +138,7 @@ class Search extends Component {
                 <QuickLinks />
                 <div className='recipes'>
                     {this.state.not_found === false ? this.state.recipes.map(recipe => {
-                        // console.log(recipe)
+                        console.log(recipe)
                         return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)} />;
                     }) : <div className='not-found'>
                         <p className='not-found-text'>Sorry, there is nothing cook with {this.state.searched}.</p>

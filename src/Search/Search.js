@@ -4,6 +4,7 @@ import Recipe from '../Recipe/Recipe';
 import './Search.css';
 import axios from 'axios';
 import $ from 'jquery';
+import {TweenMax, TweenLite} from "gsap";
 
 
 let app_id = process.env.REACT_APP_YOUR_APP_ID;
@@ -26,6 +27,11 @@ class Search extends Component {
                 low_fat: false
             }
          }
+    }
+
+    componentDidMount() {
+    //    TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200, rotation: 360})
+        TweenLite.to(".app-title", 4, {scrambleText: {text: "This is sa", chars: "XOXO", revealDelay: 0.5}})
     }
 
     handleInput = e => {
@@ -99,7 +105,7 @@ class Search extends Component {
         return (  
             <div>
                 <div className='search-header'>
-                    <h2>la cocina</h2>                
+                    <h2 className="app-title">la cocina</h2>                
                     <div className="search-wrap">
                             <form onSubmit={this.searchRecipe}>
                                 <div className="form-group row">

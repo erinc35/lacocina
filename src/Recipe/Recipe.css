@@ -29,6 +29,10 @@
     overflow: scroll;
 }
 
+.recipe-front {
+    height: 406px;
+}
+
 .image-flip:hover .backside,
 .image-flip.hover .backside {
   -webkit-transform: rotateY(0deg);

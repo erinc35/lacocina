@@ -30,7 +30,7 @@ class Search extends Component {
     }
 
     componentDidMount() {
-       TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200, rotation: 360})
+       TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
         // TweenLite.to(".app-title", 4, {scrambleText: {text: "This is sa", chars: "XOXO", revealDelay: 0.5}})
     }
 

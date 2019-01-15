@@ -19,8 +19,7 @@ class Recipe extends Component {
                             <div className='recipe-card recipe-front'>
                                 <img src={data.image} alt={data.label} className='recipe-img' />
                                 <p className='recipe-name'>{data.label}</p>
-                                <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
-                                <p className='back-item'><strong>Source:</strong> {data.source}</p>                                
+                                <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>                             
                             </div>
                         </div>
 

@@ -10,6 +10,10 @@ class Recipe extends Component {
 
     render() { 
         let data = this.props.recipeData;
+        let labelsArray = data.healthLabels;
+        let labels = labelsArray.reduce((str, label) => {
+            return str + label + ", "
+        }, '').slice(0, -2)
         // console.log(this.props.recipeData)
         return (  
                 <div className="image-flip">
@@ -19,7 +23,8 @@ class Recipe extends Component {
                             <div className='recipe-card recipe-front'>
                                 <img src={data.image} alt={data.label} className='recipe-img' />
                                 <p className='recipe-name'>{data.label}</p>
-                                <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>                             
+                                <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
+                                <p className='back-item'><strong>Health labels:</strong> {labels}</p>                                
                             </div>
                         </div>
 

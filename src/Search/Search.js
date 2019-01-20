@@ -43,7 +43,9 @@ class Search extends Component {
     searchRecipe = e => {
         e.preventDefault();
         const ingInput = this.state.ingredients;
-        this.setState({ searched: this.state.ingredients })
+        this.setState({ searched: this.state.ingredients, ingredients: '' })
+        console.log(this.state)
+        // localStorage.setItem
         let api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`;
         
         if (this.state.diets.low_carb === true || this.state.diets.high_protein === true || this.state.diets.high_fiber === true || this.state.diets.low_sodium) {
@@ -111,9 +113,13 @@ class Search extends Component {
                                 <div className="form-group row">
                                     <label className="col-sm-2 col-form-label form-label">Ingredient</label>
                                     <div className="col-sm-10 search-input-wrap">
-                                        <input onChange={this.handleInput} className="form-control" placeholder="Ingredient" name='ingredients'/>
+                                        <input onChange={this.handleInput} className="form-control" placeholder="Ingredient" name='ingredients' value={this.state.ingredients}/>
                                         <button type="submit" className="btn btn-primary">Search</button>                                    
                                     </div>
+                                    <div className="col-sm-10 search-input-wrap">
+                                        <label className="col-sm-4 col-form-label form-label">Recently searched:</label>
+                                        
+                                    </div>                                    
                                 </div>
                                 <fieldset className="form-group">
                                     <div className="row">

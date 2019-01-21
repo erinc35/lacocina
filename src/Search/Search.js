@@ -19,7 +19,8 @@ class Search extends Component {
             ingredients: "",
             recipes: [],
             not_found: false, 
-            searched: '',
+            searched: [],
+            recentSearch: [],
             diets: {
                 low_carb: false,
                 high_protein: false,
@@ -31,7 +32,13 @@ class Search extends Component {
 
     componentDidMount() {
        TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
+       console.log('cdm', localStorage)
+        this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))})
+
+        console.log('cdm', this.state)
+       
         // TweenLite.to(".app-title", 4, {scrambleText: {text: "This is sa", chars: "XOXO", revealDelay: 0.5}})
+        // this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch')) })
     }
 
     handleInput = e => {
@@ -43,8 +50,18 @@ class Search extends Component {
     searchRecipe = e => {
         e.preventDefault();
         const ingInput = this.state.ingredients;
-        this.setState({ searched: this.state.ingredients, ingredients: '' })
-        console.log(this.state)
+        const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
+        searched.push(this.state.ingredients)
+        console.log(searched)
+        localStorage.setItem('recentSearch', JSON.stringify(searched))
+        // console.log(typeof localStorage.getItem('recentSearch'))
+        console.log(localStorage.getItem('recentSearch'))
+
+        this.setState({ //searched: searched.slice(searched.length - 8), 
+            ingredients: '',
+            recentSearch: JSON.parse(localStorage.getItem('recentSearch'))
+        })
+        // this.setState({ searched ,ingredients: '' })
         // localStorage.setItem
         let api = `https://api.edamam.com/search?q=${ingInput}&app_id=${app_id}&app_key=${app_key}`;
         
@@ -62,6 +79,10 @@ class Search extends Component {
             .catch(err => {
                 console.log(err);
             });
+
+        
+        
+        
     }
 
     dietCheck = e => {
@@ -104,6 +125,11 @@ class Search extends Component {
     }
 
     render() { 
+        // localStorage.setItem('recentSearch', this.state.searched)                
+        // console.log(typeof localStorage.getItem('recentSearch'))
+        // console.log(localStorage)     
+        console.log('render', this.state.recentSearch)
+        
         return (  
             <div>
                 <div className='search-header'>
@@ -150,7 +176,7 @@ class Search extends Component {
                 <QuickLinks />
                 <div className='recipes'>
                     {this.state.not_found === false ? this.state.recipes.map(recipe => {
-                        console.log(recipe)
+                        // console.log(recipe)
                         return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)} />;
                     }) : <div className='not-found'>
                         <p className='not-found-text'>Sorry, there is nothing cook with {this.state.searched}.</p>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search/Search';
-import Recipe from './Recipe/Recipe';
-import { Route } from "react-router-dom";
+// import Recipe from './Recipe/Recipe';
+// import { Route } from "react-router-dom";
 import './App.css';
 
 class App extends Component {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import QuickLinks from '../QuickLinks/QuickLinks';
 import Recipe from '../Recipe/Recipe';
+import RecentSearch from '../RecentSearch/RecentSearch';
 import './Search.css';
 import axios from 'axios';
 import $ from 'jquery';
@@ -34,8 +35,6 @@ class Search extends Component {
        TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
        console.log('cdm', localStorage)
         this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))})
-
-        console.log('cdm', this.state)
        
         // TweenLite.to(".app-title", 4, {scrambleText: {text: "This is sa", chars: "XOXO", revealDelay: 0.5}})
         // this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch')) })
@@ -51,15 +50,19 @@ class Search extends Component {
         e.preventDefault();
         const ingInput = this.state.ingredients;
         const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
+        // const searched = this.state.searched.slice();        
         searched.push(this.state.ingredients)
         console.log(searched)
-        localStorage.setItem('recentSearch', JSON.stringify(searched))
-        // console.log(typeof localStorage.getItem('recentSearch'))
+        // localStorage.setItem('recentSearch', JSON.stringify(searched).slice(searched.length - 8))
+        localStorage.setItem('recentSearch', JSON.stringify(searched.slice(searched.length - 4)))
         console.log(localStorage.getItem('recentSearch'))
 
+        // const tempRecent = JSON.parse(localStorage.getItem('recentSearch'));
+        // tempRecent = tempRecent.slice(tempRecent.length-8)
         this.setState({ //searched: searched.slice(searched.length - 8), 
             ingredients: '',
             recentSearch: JSON.parse(localStorage.getItem('recentSearch'))
+            // recentSearch: tempRecent
         })
         // this.setState({ searched ,ingredients: '' })
         // localStorage.setItem
@@ -128,7 +131,7 @@ class Search extends Component {
         // localStorage.setItem('recentSearch', this.state.searched)                
         // console.log(typeof localStorage.getItem('recentSearch'))
         // console.log(localStorage)     
-        console.log('render', this.state.recentSearch)
+        // console.log('render', this.state.recentSearch)
         
         return (  
             <div>
@@ -142,9 +145,9 @@ class Search extends Component {
                                         <input onChange={this.handleInput} className="form-control" placeholder="Ingredient" name='ingredients' value={this.state.ingredients}/>
                                         <button type="submit" className="btn btn-primary">Search</button>                                    
                                     </div>
-                                    <div className="col-sm-10 search-input-wrap">
-                                        <label className="col-sm-4 col-form-label form-label">Recently searched:</label>
-                                        
+                                    <div className="col-sm-10 search-input-wrap mt-3">
+                                        <label className="col-sm-4 recent-label form-label">Recently searched:</label>
+                                        {this.state.recentSearch ? <RecentSearch recentSearch={this.state.recentSearch}/> : null}
                                     </div>                                    
                                 </div>
                                 <fieldset className="form-group">

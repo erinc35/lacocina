@@ -1,0 +1,9 @@
+.recent-wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.recent-button {
+    width: 90px;
+}

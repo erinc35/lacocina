@@ -56,6 +56,11 @@
     text-shadow: 1px 1px white;
     font-weight: bold;    
 }
+
+.recent-label {
+    padding-left: 0;
+}
+
 .not-found {
     width: 100%;
     background: url('../images/kitchen3.jpeg');

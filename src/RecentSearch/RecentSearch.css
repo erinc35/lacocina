@@ -2,8 +2,12 @@
     display: flex;
     justify-content: space-around;
     width: 100%;
+    font-size: 13px;
 }
 
 .recent-button {
-    width: 90px;
+    width: 15%;
+    height: 50%;
+    border-radius: 10px;
+    padding-bottom: 3%;    
 }

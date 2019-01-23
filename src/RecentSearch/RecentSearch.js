@@ -13,7 +13,7 @@ class RecentSearch extends Component {
         return(
             <div className='recent-wrapper'>
                 {inputs.map((input, ind) => {
-                    return <span key={ind} className='recent-button'>{input}</span>
+                    return <button key={ind} className='recent-button'>{input}</button>
                 })}
             </div>
         )

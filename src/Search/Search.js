@@ -33,8 +33,10 @@ class Search extends Component {
 
     componentDidMount() {
        TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
-       console.log('cdm', localStorage)
-        this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))})
+    //    console.log('cdm', localStorage)
+        this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch')),
+                        recipes: []
+    })
        
         // TweenLite.to(".app-title", 4, {scrambleText: {text: "This is sa", chars: "XOXO", revealDelay: 0.5}})
         // this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch')) })
@@ -48,6 +50,7 @@ class Search extends Component {
 
     searchRecipe = e => {
         e.preventDefault();
+        $('.recipes div').empty();
         const ingInput = this.state.ingredients;
         const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
         // const searched = this.state.searched.slice();        
@@ -61,7 +64,8 @@ class Search extends Component {
         // tempRecent = tempRecent.slice(tempRecent.length-8)
         this.setState({ //searched: searched.slice(searched.length - 8), 
             ingredients: '',
-            recentSearch: JSON.parse(localStorage.getItem('recentSearch'))
+            recentSearch: JSON.parse(localStorage.getItem('recentSearch')),
+            recipes: []
             // recentSearch: tempRecent
         })
         // this.setState({ searched ,ingredients: '' })

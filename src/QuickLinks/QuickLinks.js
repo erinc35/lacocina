@@ -8,6 +8,8 @@ import salad from '../images/salad.jpeg';
 import chicken from '../images/chicken.jpeg';
 import './QuickLinks.css';
 import axios from 'axios';
+import $ from 'jquery';
+
 
 
 let app_id = process.env.REACT_APP_YOUR_APP_ID;
@@ -22,7 +24,13 @@ class QuickLinks extends Component {
     }
 
 
+
     fetchQuickLink = e => {
+        $('.recipes div').empty();
+        
+        this.setState({
+            recipes: []
+        })
         let ing = e.target.alt;
         let quick_api = `https://api.edamam.com/search?q=${ing}&app_id=${app_id}&app_key=${app_key}&count=20`
         axios

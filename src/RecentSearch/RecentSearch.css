@@ -6,7 +6,7 @@
 }
 
 .recent-button {
-    width: 15%;
+    width: auto;
     height: 50%;
     border-radius: 10px;
     padding-bottom: 3%;    

@@ -34,8 +34,7 @@ class Search extends Component {
     componentDidMount() {
        TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
     //    console.log('cdm', localStorage)
-        this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch')),
-                        recipes: []
+        this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))
     })
        
         // TweenLite.to(".app-title", 4, {scrambleText: {text: "This is sa", chars: "XOXO", revealDelay: 0.5}})
@@ -55,10 +54,8 @@ class Search extends Component {
         const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
         // const searched = this.state.searched.slice();        
         searched.push(this.state.ingredients)
-        console.log(searched)
         // localStorage.setItem('recentSearch', JSON.stringify(searched).slice(searched.length - 8))
         localStorage.setItem('recentSearch', JSON.stringify(searched.slice(searched.length - 4)))
-        console.log(localStorage.getItem('recentSearch'))
 
         // const tempRecent = JSON.parse(localStorage.getItem('recentSearch'));
         // tempRecent = tempRecent.slice(tempRecent.length-8)

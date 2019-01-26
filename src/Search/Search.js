@@ -22,6 +22,7 @@ class Search extends Component {
             not_found: false, 
             searched: [],
             recentSearch: [],
+            invalidSearch: '',
             diets: {
                 low_carb: false,
                 high_protein: false,
@@ -60,6 +61,7 @@ class Search extends Component {
         // const tempRecent = JSON.parse(localStorage.getItem('recentSearch'));
         // tempRecent = tempRecent.slice(tempRecent.length-8)
         this.setState({ //searched: searched.slice(searched.length - 8), 
+            invalidSearch: this.state.ingredients,
             ingredients: '',
             recentSearch: JSON.parse(localStorage.getItem('recentSearch')),
             recipes: []
@@ -83,10 +85,6 @@ class Search extends Component {
             .catch(err => {
                 console.log(err);
             });
-
-        
-        
-        
     }
 
     dietCheck = e => {
@@ -183,7 +181,7 @@ class Search extends Component {
                         // console.log(recipe)
                         return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)} />;
                     }) : <div className='not-found'>
-                        <p className='not-found-text'>Sorry, there is nothing cook with {this.state.searched}.</p>
+                            <p className='not-found-text'>Sorry, there is nothing cook with {this.state.invalidSearch}.</p>
                     </div>
                     }
                 </div>

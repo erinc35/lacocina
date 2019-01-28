@@ -85,6 +85,7 @@ class Search extends Component {
             .catch(err => {
                 console.log(err);
             });
+
     }
 
     dietCheck = e => {
@@ -129,7 +130,7 @@ class Search extends Component {
     render() { 
         // localStorage.setItem('recentSearch', this.state.searched)                
         // console.log(typeof localStorage.getItem('recentSearch'))
-        // console.log(localStorage)     
+        // console.log(this.state.recipes)     
         // console.log('render', this.state.recentSearch)
         
         return (  
@@ -176,9 +177,8 @@ class Search extends Component {
                     </div>
                 </div>
                 <QuickLinks />
-                <div className='recipes'>
+                <div className='recipes' id='search'>
                     {this.state.not_found === false ? this.state.recipes.map(recipe => {
-                        // console.log(recipe)
                         return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)} />;
                     }) : <div className='not-found'>
                             <p className='not-found-text'>Sorry, there is nothing cook with {this.state.invalidSearch}.</p>

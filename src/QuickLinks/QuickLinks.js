@@ -26,8 +26,28 @@ class QuickLinks extends Component {
 
 
     fetchQuickLink = e => {
-        $('.recipes div').empty();
+        e.preventDefault();
+        // let recipes = $('.recipes')[1];
+        // console.log($('#search')[0].children) 
+        let recipes = $('#search')[0];
+        // for (var i = 0; i < recipes.length; ++i) {
+        //     // recipes[i].remove();
+        //     console.log(recipes[i])
+        // }
+        // if (recipes.children.length > 0) {
+        //     for (var i = recipes.length-1; i >= 0; --i) {
+        //         console.log(recipes[i])
+        //         recipes[i].empty();
+        //     }
+        //     recipes.remove()
+        // }
+        // recipes.children.remove()
+
+        console.log('after remove', recipes)
         
+        // $('.recipes')[1].children.empty()
+        // $('.not-found').remove();
+        // console.log($('.recipes div'))
         this.setState({
             recipes: []
         })
@@ -46,6 +66,8 @@ class QuickLinks extends Component {
     }
 
     render() { 
+        // if ($('.recipes.not-found')) $('.recipes.not-found').empty();
+        // console.log(this.state.recipes)
         return ( 
             <div>
                 <div className='quicklinks'>
@@ -74,7 +96,7 @@ class QuickLinks extends Component {
                         <span>Chicken Recipes</span>
                     </div>    
                 </div>
-                <div className='recipes'>
+                <div className='recipes' id='quicklinks'>
                     {this.state.recipes ? this.state.recipes.map(recipe => {
                         // console.log(recipe)
                         return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)}/>;

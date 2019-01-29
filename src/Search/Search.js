@@ -147,7 +147,7 @@ class Search extends Component {
                                     </div>
                                     <div className="col-sm-10 search-input-wrap mt-3">
                                         <label className="col-sm-4 recent-label form-label">Recently searched:</label>
-                                        {this.state.recentSearch ? <RecentSearch recentSearch={this.state.recentSearch}/> : null}
+                                    {this.state.recentSearch ? <RecentSearch recentSearch={this.state.recentSearch} searchRecipe={this.searchRecipe}/> : null}
                                     </div>                                    
                                 </div>
                                 <fieldset className="form-group">

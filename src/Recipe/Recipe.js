@@ -32,9 +32,9 @@ class Recipe extends Component {
                             <div className='recipe-card recipe-back'>
                                 <h2>{data.label}</h2>
                                 <p className='recipe-source'><strong>Source:</strong> {data.source}</p>
-                            <p className='recipe-name'><strong>Ingredients:</strong></p>      
+                                <p className='recipe-name'><strong>Ingredients:</strong></p>      
                                 {data.ingredientLines.map((ing, ind) => {
-                                    return <p key={ind} className='back-item'>{ing}</p>                              
+                                    return <li key={ind} className='back-item'>{ing}</li>                              
                                 })}                          
                             </div>
                         </div>

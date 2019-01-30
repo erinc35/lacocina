@@ -9,7 +9,6 @@ class RecentSearch extends Component {
 
     render() { 
         const inputs = this.props.recentSearch;
-        // console.log(inputs)
         return(
             <div className='recent-wrapper'>
                 {inputs.map((input, ind) => {

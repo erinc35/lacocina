@@ -88,6 +88,30 @@ class Search extends Component {
 
     }
 
+    handleRecentSearch = (e, input) => {
+        e.preventDefault();
+        $('.recipes div').empty();
+        const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
+        searched.push(input)
+        localStorage.setItem('recentSearch', JSON.stringify(searched.slice(searched.length - 4)))
+
+        this.setState({ 
+            invalidSearch: this.state.ingredients,
+            ingredients: '',
+            recentSearch: JSON.parse(localStorage.getItem('recentSearch')),
+            recipes: []
+        })
+        let api = `https://api.edamam.com/search?q=${input}&app_id=${app_id}&app_key=${app_key}`;
+        axios.get(api)
+            .then(response => {
+                response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false }) :
+                    this.setState({ not_found: true });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     dietCheck = e => {
         $("input:checkbox").on('click', (e) => {
             // in the handler, 'this' refers to the box clicked on
@@ -128,11 +152,6 @@ class Search extends Component {
     }
 
     render() { 
-        // localStorage.setItem('recentSearch', this.state.searched)                
-        // console.log(typeof localStorage.getItem('recentSearch'))
-        // console.log(this.state.recipes)     
-        // console.log('render', this.state.recentSearch)
-        
         return (  
             <div>
                 <div className='search-header'>
@@ -147,7 +166,7 @@ class Search extends Component {
                                     </div>
                                     <div className="col-sm-10 search-input-wrap mt-3">
                                         <label className="col-sm-4 recent-label form-label">Recently searched:</label>
-                                    {this.state.recentSearch ? <RecentSearch recentSearch={this.state.recentSearch} searchRecipe={this.searchRecipe}/> : null}
+                                    {this.state.recentSearch ? <RecentSearch recentSearch={this.state.recentSearch} handleRecentSearch={this.handleRecentSearch}/> : null}
                                     </div>                                    
                                 </div>
                                 <fieldset className="form-group">

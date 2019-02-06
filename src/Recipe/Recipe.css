@@ -6,6 +6,11 @@
     min-height: 457px;
     border-radius: 4%;
     height: 457px;
+    color: black
+}
+
+.recipe-card:hover {
+    text-decoration: none;
 }
 
 .recipe-img {

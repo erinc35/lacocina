@@ -52,6 +52,10 @@
     font-size: 1.9rem;
 }
 
+.recipe-link:hover{
+    text-decoration: none;
+}
+
 .form-label {
     text-shadow: 1px 1px white;
     font-weight: bold;    

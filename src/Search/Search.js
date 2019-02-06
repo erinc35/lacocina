@@ -199,7 +199,7 @@ class Search extends Component {
                 <div className='recipes' id='search'>
                     {this.state.not_found === false ? this.state.recipes.map(recipe => {
                         console.log(recipe)
-                        return <a target="_blank" href={recipe.recipe.url} key={Math.floor(recipe.recipe.calories)}><Recipe recipeData={recipe.recipe}  /></a>
+                        return <a target="_blank" href={recipe.recipe.url} className='recipe-link' key={Math.floor(recipe.recipe.calories)}><Recipe recipeData={recipe.recipe}  /></a>
                     }) : <div className='not-found'>
                             <p className='not-found-text'>Sorry, there is nothing cook with {this.state.invalidSearch}.</p>
                     </div>

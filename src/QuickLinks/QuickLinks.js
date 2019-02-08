@@ -23,31 +23,9 @@ class QuickLinks extends Component {
          }
     }
 
-
-
     fetchQuickLink = e => {
         e.preventDefault();
-        // let recipes = $('.recipes')[1];
-        // console.log($('#search')[0].children) 
         let recipes = $('#search')[0];
-        // for (var i = 0; i < recipes.length; ++i) {
-        //     // recipes[i].remove();
-        //     console.log(recipes[i])
-        // }
-        // if (recipes.children.length > 0) {
-        //     for (var i = recipes.length-1; i >= 0; --i) {
-        //         console.log(recipes[i])
-        //         recipes[i].empty();
-        //     }
-        //     recipes.remove()
-        // }
-        // recipes.children.remove()
-
-        console.log('after remove', recipes)
-        
-        // $('.recipes')[1].children.empty()
-        // $('.not-found').remove();
-        // console.log($('.recipes div'))
         this.setState({
             recipes: []
         })

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import QuickLinks from '../QuickLinks/QuickLinks';
 import Recipe from '../Recipe/Recipe';
+import SearchForm from '../SearchForm/SearchForm';
 import RecentSearch from '../RecentSearch/RecentSearch';
 import './Search.css';
 import axios from 'axios';
@@ -34,7 +35,7 @@ class Search extends Component {
 
     componentDidMount() {
        TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
-    //    console.log('cdm', localStorage)
+        // this.recepieFadeIn()
         this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))
     })
        
@@ -46,6 +47,40 @@ class Search extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
+    }
+
+    recepieFadeIn = () => {
+        $(document).ready(function () {
+            // $(document).ready(function () {
+                console.log($('.image-flip'))
+                $('.image-flip').each(function (index) {
+                    $(this).delay(400 * index).fadeIn(300);
+                }); 
+            // })
+        })
+
+        // $(document).ready(function () {
+
+        //     $(window).scroll(function () {
+        //         console.log($('.image-flip'))
+        //         // $('.image-flip')[0]
+        //         /* Check the location of each desired element */
+        //         let recipes = $('.image-flip');
+        //         recipes.each(function (i) {
+        //         // for(let i = 0; i < recipes.length; i++){
+        //             var bottom_of_object = $(this).position().top + $(this).outerHeight();
+        //             var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+        //             /* If the object is completely visible in the window, fade it it */
+        //             if (bottom_of_window > bottom_of_object) {
+        //                 $(this).animate({ 'opacity': '1' }, 1800);
+        //                 // recipes[i].animate({ 'opacity': '1' }, 1800);
+                        
+        //             }
+        //         });
+        //         // }
+        //     });
+        // });
     }
 
     searchRecipe = e => {
@@ -88,7 +123,7 @@ class Search extends Component {
         for(let i = 0; i < boxes.length; i++) {
             boxes[i].checked = false;
         }
-
+        
     }
 
     handleRecentSearch = (e, input) => {
@@ -150,10 +185,12 @@ class Search extends Component {
     }
 
     render() { 
+
         return (  
             <div>
                 <div className='search-header'>
-                    <h2 className="app-title">la cocina</h2>                
+                    <h2 className="app-title">la cocina</h2>  
+
                     <div className="search-wrap">
                             <form onSubmit={this.searchRecipe}>
                                 <div className="form-group row">
@@ -196,7 +233,7 @@ class Search extends Component {
                 <QuickLinks />
                 <div className='recipes' id='search'>
                     {this.state.not_found === false ? this.state.recipes.map(recipe => {
-                        console.log(recipe)
+                        // console.log(recipe)
                         return <a target="_blank" href={recipe.recipe.url} className='recipe-link' key={Math.floor(recipe.recipe.calories)}><Recipe recipeData={recipe.recipe}  /></a>
                     }) : <div className='not-found'>
                             <p className='not-found-text'>Sorry, there is nothing cook with {this.state.invalidSearch}.</p>
@@ -205,6 +242,7 @@ class Search extends Component {
                 </div>
                 
             </div>
+            
         );
     }
 }

@@ -36,8 +36,11 @@ class Search extends Component {
     componentDidMount() {
        TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
         // this.recepieFadeIn()
-        this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))
-    })
+        // TweenMax.omTo(".recipes", 3, {
+        //     opacity: 0
+        // })
+        this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))})
+    console.log('cdm')
        
         // TweenLite.to(".app-title", 4, {scrambleText: {text: "This is sa", chars: "XOXO", revealDelay: 0.5}})
         // this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch')) })
@@ -51,10 +54,13 @@ class Search extends Component {
 
     recepieFadeIn = () => {
         $(document).ready(function () {
-            // $(document).ready(function () {
+            // window.onload(function () {
                 console.log($('.image-flip'))
                 $('.image-flip').each(function (index) {
-                    $(this).delay(400 * index).fadeIn(300);
+                    console.log($(this))
+                    $(this).delay(700 * index).animate({ 'opacity': '1' }, 1000);
+                    // $(this).hide().fadeIn(2000)
+                    
                 }); 
             // })
         })
@@ -185,7 +191,8 @@ class Search extends Component {
     }
 
     render() { 
-
+        this.recepieFadeIn()
+        
         return (  
             <div>
                 <div className='search-header'>

@@ -34,16 +34,8 @@ class Search extends Component {
     }
 
     componentDidMount() {
-       TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
-        // this.recepieFadeIn()
-        // TweenMax.omTo(".recipes", 3, {
-        //     opacity: 0
-        // })
+        TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
         this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))})
-    console.log('cdm')
-       
-        // TweenLite.to(".app-title", 4, {scrambleText: {text: "This is sa", chars: "XOXO", revealDelay: 0.5}})
-        // this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch')) })
     }
 
     handleInput = e => {
@@ -65,28 +57,6 @@ class Search extends Component {
             // })
         })
 
-        // $(document).ready(function () {
-
-        //     $(window).scroll(function () {
-        //         console.log($('.image-flip'))
-        //         // $('.image-flip')[0]
-        //         /* Check the location of each desired element */
-        //         let recipes = $('.image-flip');
-        //         recipes.each(function (i) {
-        //         // for(let i = 0; i < recipes.length; i++){
-        //             var bottom_of_object = $(this).position().top + $(this).outerHeight();
-        //             var bottom_of_window = $(window).scrollTop() + $(window).height();
-
-        //             /* If the object is completely visible in the window, fade it it */
-        //             if (bottom_of_window > bottom_of_object) {
-        //                 $(this).animate({ 'opacity': '1' }, 1800);
-        //                 // recipes[i].animate({ 'opacity': '1' }, 1800);
-                        
-        //             }
-        //         });
-        //         // }
-        //     });
-        // });
     }
 
     searchRecipe = e => {

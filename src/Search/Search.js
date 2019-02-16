@@ -46,7 +46,7 @@ class Search extends Component {
 
     recepieFadeIn = () => {
         $(document).ready(function () {
-            // window.onload(function () {
+            window.onload(function () {
                 console.log($('.image-flip'))
                 $('.image-flip').each(function (index) {
                     console.log($(this))

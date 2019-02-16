@@ -66,7 +66,7 @@ class Search extends Component {
         const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
         // const searched = this.state.searched.slice();        
         searched.push(this.state.ingredients)
-        localStorage.setItem('recentSearch', JSON.stringify(searched).slice(searched.length - 8))
+        // localStorage.setItem('recentSearch', JSON.stringify(searched).slice(searched.length - 8))
         localStorage.setItem('recentSearch', JSON.stringify(searched.slice(searched.length - 4)))
 
         this.setState({ //searched: searched.slice(searched.length - 8), 

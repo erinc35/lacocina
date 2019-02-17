@@ -15,11 +15,11 @@ class RecentSearch extends Component {
     render() { 
         const inputs = this.props.recentSearch;
         return(
-                <div className='recent-wrapper'>
-                    {inputs.map((input, ind) => {
-                        return <button onClick={(e) => this.props.handleRecentSearch(e,input)} key={ind} className='recent-button'>{input}</button>
-                    })}
-                </div>
+            <div className='recent-wrapper'>
+                {inputs.map((input, ind) => {
+                    return <button onClick={(e) => this.props.handleRecentSearch(e,input)} key={ind} className='recent-button'>{input}</button>
+                })}
+            </div>
                 
         )
     }

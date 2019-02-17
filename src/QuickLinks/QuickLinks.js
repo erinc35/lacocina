@@ -34,9 +34,7 @@ class QuickLinks extends Component {
         axios
             .get(quick_api)
             .then(response => {
-                // console.log(response)
                 this.setState({ recipes: response.data.hits });
-                // console.log(this.state.recipes)
             })
             .catch(err => {
                 console.log(err);
@@ -44,8 +42,7 @@ class QuickLinks extends Component {
     }
 
     render() { 
-        // if ($('.recipes.not-found')) $('.recipes.not-found').empty();
-        // console.log(this.state.recipes)
+        this.props.recepieFadeIn();
         return ( 
             <div>
                 <div className='quicklinks'>
@@ -76,7 +73,6 @@ class QuickLinks extends Component {
                 </div>
                 <div className='recipes' id='quicklinks'>
                     {this.state.recipes ? this.state.recipes.map(recipe => {
-                        // console.log(recipe)
                         return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)}/>;
                     }) : <div></div>
                     }

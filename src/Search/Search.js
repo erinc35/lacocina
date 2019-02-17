@@ -46,7 +46,7 @@ class Search extends Component {
 
     recepieFadeIn = () => {
         $(document).ready(function () {
-            window.onload(function () {
+            // window.onload(function () {
                 console.log($('.image-flip'))
                 $('.image-flip').each(function (index) {
                     console.log($(this))
@@ -207,7 +207,7 @@ class Search extends Component {
                             </form>
                     </div>
                 </div>
-                <QuickLinks />
+                <QuickLinks recepieFadeIn={this.recepieFadeIn}/>
                 <div className='recipes' id='search'>
                     {this.state.not_found === false ? this.state.recipes.map(recipe => {
                         // console.log(recipe)

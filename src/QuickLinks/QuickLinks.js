@@ -42,7 +42,7 @@ class QuickLinks extends Component {
     }
 
     render() { 
-        this.props.recepieFadeIn();
+        // this.props.recepieFadeIn();
         return ( 
             <div>
                 <div className='quicklinks'>

@@ -50,7 +50,7 @@ class Search extends Component {
                 console.log($('.image-flip'))
                 $('.image-flip').each(function (index) {
                     console.log($(this))
-                    $(this).delay(800 * index).animate({ 'opacity': '1' }, 1000);
+                    $(this).delay(400 * index).animate({ 'opacity': '1' }, 1000);
                     // $(this).hide().fadeIn(2000)
                     
                 }); 

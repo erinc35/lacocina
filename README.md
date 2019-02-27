@@ -2,9 +2,12 @@
 
 Find and share everyday cooking inspiration on La Cocina. Discover recipes, cooks, videos, and how-tos based on the food you love and the friends you follow.
 
+### search form
+![search form](https://github.com/erinc35/lacocina/blob/master/search.png)
 
+### recipe search results
+![recipe search results](https://github.com/erinc35/lacocina/blob/master/recipe_results.png)
 
-<!-- ![](https://github.com/erinc35/lacocina/la_cocina.gif) -->
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

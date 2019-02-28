@@ -157,7 +157,7 @@
 }
 .soup-pot-loader {
   background-color: lightgoldenrodyellow;
-  border: 1px solid "#004071";
+  border: 1px solid lightgoldenrodyellow;
   height: 600px;
   position: relative;
   overflow: hidden;

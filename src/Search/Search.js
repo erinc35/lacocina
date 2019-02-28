@@ -46,15 +46,9 @@ class Search extends Component {
 
     recepieFadeIn = () => {
         $(document).ready(function () {
-            // window.onload(function () {
-                console.log($('.image-flip'))
                 $('.image-flip').each(function (index) {
-                    console.log($(this))
-                    $(this).delay(400 * index).animate({ 'opacity': '1' }, 1000);
-                    // $(this).hide().fadeIn(2000)
-                    
-                }); 
-            // })
+                    $(this).delay(400 * index).animate({ 'opacity': '1' }, 1000)
+                });
         })
 
     }
@@ -211,6 +205,12 @@ class Search extends Component {
                     </div>
                 </div>
                 <QuickLinks recepieFadeIn={this.recepieFadeIn}/>
+                {this.state.recipes.length === 0 ? <div className="soup-pot-loader">
+                    <div className="can"></div>
+                    <div className="can"></div>
+                    <div className="can"></div>
+                    <div className="soup-pot-loader-pot"></div>
+                </div> : null}
                 <div className='recipes' id='search'>
                     {this.state.not_found === false ? this.state.recipes.map(recipe => {
                         // console.log(recipe)

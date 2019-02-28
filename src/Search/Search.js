@@ -161,7 +161,10 @@ class Search extends Component {
     }
 
     render() { 
-        this.recepieFadeIn()
+        this.recepieFadeIn();
+        // if(this.state.recipes.length === 0) {
+        //     return <div>buu</div>
+        // }
         
         return (  
             <div>

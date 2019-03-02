@@ -57,7 +57,7 @@ class Search extends Component {
         e.preventDefault();
         $('.recipes div').empty();
         const ingInput = this.state.ingredients;
-        const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
+        const searched = JSON.parse(localStorage.getItem('recentSearch')).slice() || '';
         // const searched = this.state.searched.slice();        
         searched.push(this.state.ingredients)
         // localStorage.setItem('recentSearch', JSON.stringify(searched).slice(searched.length - 8))

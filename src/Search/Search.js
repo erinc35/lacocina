@@ -164,7 +164,7 @@ class Search extends Component {
         return (  
             <div>
                 <div className='search-header'>
-                    <h2 className="app-title">la cocina</h2>  
+                    <h1 className="app-title">la cocina</h1>  
 
                     <div className="search-wrap">
                             <form onSubmit={this.searchRecipe}>

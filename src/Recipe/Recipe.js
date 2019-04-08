@@ -14,7 +14,7 @@ class Recipe extends Component {
         let labels = labelsArray.reduce((str, label) => {
             return str + label + ", "
         }, '').slice(0, -2)
-        // console.log(this.props.recipeData)
+
         return (  
                 <div className="image-flip">
 

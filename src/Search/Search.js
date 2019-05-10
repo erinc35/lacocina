@@ -36,6 +36,8 @@ class Search extends Component {
     componentDidMount() {
         TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
         this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))})
+        document.cookie = 'color: blue; expires= Thu, 30 Aug 2019 19:00:00 UTC'
+
     }
 
     handleInput = e => {
@@ -83,6 +85,7 @@ class Search extends Component {
 
         axios.get(api)
             .then(response => {
+                console.log(response)
                 response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false}) : 
                     this.setState({ not_found: true });
             })

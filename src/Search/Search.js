@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link} from 'react-router-dom';
 import QuickLinks from '../QuickLinks/QuickLinks';
 import Recipe from '../Recipe/Recipe';
 import SearchForm from '../SearchForm/SearchForm';
@@ -163,12 +164,14 @@ class Search extends Component {
         // if(this.state.recipes.length === 0) {
         //     return <div>buu</div>
         // }
-        
         return (  
             <div>
                 <div className='search-header'>
                     <h1 className="app-title">la cocina</h1>  
-
+                    {this.props.isAuthenticated()
+                        ? 
+                        <Link to={`/`} onClick={this.props.logout}>Logout</Link> : <Link to={`/authenticating`} onClick={this.props.login}>Login</Link>
+                    }
                     <div className="search-wrap">
                             <form onSubmit={this.searchRecipe}>
                                 <div className="form-group row">

@@ -16,10 +16,10 @@ class Recipe extends Component {
         }, '').slice(0, -2)
 
         return (  
-                <div className="image-flip">
+                <div className="">
 
-                    <div className="mainflip">
-                        <div className="frontside">
+                    <div className="">
+                        <div className="">
                             <div className='recipe-card recipe-front'>
                                 <img src={data.image} alt={data.label} className='recipe-img' />
                                 <strong><p className='recipe-name'>{data.label}</p></strong>
@@ -28,7 +28,7 @@ class Recipe extends Component {
                             </div>
                         </div>
 
-                        <div className="backside">
+                        <div className="">
                             <div className='recipe-card recipe-back'>
                                 <h2>{data.label}</h2>
                                 <p className='recipe-source'><strong>Source:</strong> {data.source}</p>

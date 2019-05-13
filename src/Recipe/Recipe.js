@@ -24,11 +24,12 @@ class Recipe extends Component {
                                 <img src={data.image} alt={data.label} className='recipe-img' />
                                 <strong><p className='recipe-name'>{data.label}</p></strong>
                                 <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
-                                <p className='back-item'><strong>Health labels:</strong> {labels}</p>                                
+                                <p className='back-item'><strong>Health labels:</strong> {labels}</p>     
+                                <i className="far fa-heart heart"></i>                           
                             </div>
                         </div>
 
-                        <div className="">
+                        {/* <div className="">
                             <div className='recipe-card recipe-back'>
                                 <h2>{data.label}</h2>
                                 <p className='recipe-source'><strong>Source:</strong> {data.source}</p>
@@ -37,7 +38,7 @@ class Recipe extends Component {
                                     return <li key={ind} className='back-item'>{ing}</li>                              
                                 })}                          
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>

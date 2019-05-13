@@ -8,6 +8,10 @@ class Recipe extends Component {
         this.state = {  }
     }
 
+    handleClickHeart = e => {
+        alert('heart')
+    }
+ 
     render() { 
         let data = this.props.recipeData;
         let labelsArray = data.healthLabels;

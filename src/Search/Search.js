@@ -164,6 +164,7 @@ class Search extends Component {
         // if(this.state.recipes.length === 0) {
         //     return <div>buu</div>
         // }
+        console.log(localStorage.getItem('userId'))
         return (  
             <div>
                 <div className='search-header'>

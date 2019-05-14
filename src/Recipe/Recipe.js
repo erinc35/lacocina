@@ -5,14 +5,55 @@ import './Recipe.css';
 class Recipe extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { recipe: {} }
     }
 
+    componentDidMount() {
+        this.setState({ recipe: this.props.recipeData})
+    }
     handleClickHeart = e => {
+        console.log(e.target.parentNode)
+        e.preventDefault();
         alert('heart')
     }
+
+
+    // handleLikeRecepie = async (event) => {
+    //     event.preventDefault();
+    //     const userId = { userId: localStorage.getItem('userId') }
+    //     const groupData = { name: this.state.group.name }
+
+    //     try {
+    //         // First Creat New Group
+    //         const res = await axios.post(`${host}/api/groups`, groupData)
+    //         if (res) {
+    //             this.setState({ group: res.data })
+    //             // Then add user as group owner
+    //             axios
+    //                 .post(`${host}/api/groups/${res.data.id}/groupOwners`, userId)
+    //                 .then(() => {
+    //                     // Then add user as group member
+    //                     axios
+    //                         .post(`${host}/api/groups/${res.data.id}/groupMembers`, userId)
+    //                         .then(() => {
+    //                             // Then add to group activities and update groups
+    //                             axios
+    //                                 .post(`${host}/api/groups/${res.data.id}/activities`, activity)
+    //                                 .then(() => this.props.updateGroups())
+    //                         })
+    //                 })
+    //         }
+    //     } catch (err) {
+    //         this.clearSearch();
+    //         this.setState({ error: { code: err.response.status, message: err.response.statusText } });
+    //     };
+
+    //     this.toggleInvite()
+
+    // };
  
     render() { 
+        console.log(this.state.recipe)
         let data = this.props.recipeData;
         let labelsArray = data.healthLabels;
         let labels = labelsArray.reduce((str, label) => {
@@ -20,7 +61,7 @@ class Recipe extends Component {
         }, '').slice(0, -2)
 
         return (  
-                <div className="">
+                <div className="" onClick={this.handleClickHeart}>
 
                     <div className="">
                         <div className="">

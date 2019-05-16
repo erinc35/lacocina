@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from 'axios';
+import host from '../host';
 import './Recipe.css';
 
 
@@ -8,49 +10,62 @@ class Recipe extends Component {
         this.state = { recipe: {} }
     }
 
-    componentDidMount() {
-        this.setState({ recipe: this.props.recipeData})
-    }
+    // componentDidMount() {
+    //     this.setState({ recipe: this.props.recipeData})
+    // }
     handleClickHeart = e => {
         console.log(e.target.parentNode)
         e.preventDefault();
         alert('heart')
     }
 
+    getRecipeData = (recipe) => _event => {
+        //    JSON.stringify(recipe);
+        // console.log("From handleClick: ", recipe)
+        _event.preventDefault();
+        let currentRecipe = {
+            'name': recipe.label,
+            'image': recipe.image,
+            'calories': recipe.calories,
+            'url': recipe.url
+        }
+           this.setState({ recipe: currentRecipe })
+        // console.log(currentRecipe)
+    }
 
-    // handleLikeRecepie = async (event) => {
-    //     event.preventDefault();
-    //     const userId = { userId: localStorage.getItem('userId') }
-    //     const groupData = { name: this.state.group.name }
 
-    //     try {
-    //         // First Creat New Group
-    //         const res = await axios.post(`${host}/api/groups`, groupData)
-    //         if (res) {
-    //             this.setState({ group: res.data })
-    //             // Then add user as group owner
-    //             axios
-    //                 .post(`${host}/api/groups/${res.data.id}/groupOwners`, userId)
-    //                 .then(() => {
-    //                     // Then add user as group member
-    //                     axios
-    //                         .post(`${host}/api/groups/${res.data.id}/groupMembers`, userId)
-    //                         .then(() => {
-    //                             // Then add to group activities and update groups
-    //                             axios
-    //                                 .post(`${host}/api/groups/${res.data.id}/activities`, activity)
-    //                                 .then(() => this.props.updateGroups())
-    //                         })
-    //                 })
-    //         }
-    //     } catch (err) {
-    //         this.clearSearch();
-    //         this.setState({ error: { code: err.response.status, message: err.response.statusText } });
-    //     };
+    handleLikeRecepie = async (event) => {
+        event.preventDefault();
+        const userId = { userId: localStorage.getItem('userId') }
+        const recipeData = this.state.recipe
 
-    //     this.toggleInvite()
+        try {
+            // First Creat New Group
+            const res = await axios.post(`${host}/api/recipes`, recipeData)
+            if (res) {
+                this.setState({ group: res.data })
+                // Then add user as group owner
+                axios
+                    .post(`${host}/api/groups/${res.data.id}/groupOwners`, userId)
+                    .then(() => {
+                        // Then add user as group member
+                        axios
+                            .post(`${host}/api/groups/${res.data.id}/groupMembers`, userId)
+                            .then(() => {
+                                // Then add to group activities and update groups
+                                axios
+                                    .then(() => this.props.updateGroups())
+                            })
+                    })
+            }
+        } catch (err) {
+            this.clearSearch();
+            this.setState({ error: { code: err.response.status, message: err.response.statusText } });
+        };
 
-    // };
+        this.toggleInvite()
+
+    };
  
     render() { 
         console.log(this.state.recipe)
@@ -61,7 +76,7 @@ class Recipe extends Component {
         }, '').slice(0, -2)
 
         return (  
-                <div className="" onClick={this.handleClickHeart}>
+            <div className="" onClick={this.getRecipeData(data)}>
 
                     <div className="">
                         <div className="">

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import './RecentSearch.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 
-let app_id = process.env.REACT_APP_YOUR_APP_ID;
-let app_key = process.env.REACT_APP_YOUR_APP_KEY;
+// let app_id = process.env.REACT_APP_YOUR_APP_ID;
+// let app_key = process.env.REACT_APP_YOUR_APP_KEY;
 
 
 class RecentSearch extends Component {

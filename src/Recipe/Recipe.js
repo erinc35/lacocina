@@ -34,37 +34,29 @@ class Recipe extends Component {
     }
 
 
-    handleLikeRecepie = async (event) => {
+    handleLikeRecipe = async (event) => {
         event.preventDefault();
+        let { label, image, calories, url } = this.props.recipeData
         const userId = { userId: localStorage.getItem('userId') }
-        const recipeData = this.state.recipe
-
+        // const recipeData = this.state.recipe
+        let currentRecipe = {
+            'name': label,
+            'image': image,
+            'calories': calories,
+            'url': url
+        }
+        console.log(currentRecipe)
         try {
             // First Creat New Group
-            const res = await axios.post(`${host}/api/recipes`, recipeData)
+            const res = await axios.post(`${host}/api/recipes`, currentRecipe)
             if (res) {
-                this.setState({ group: res.data })
-                // Then add user as group owner
-                axios
-                    .post(`${host}/api/groups/${res.data.id}/groupOwners`, userId)
-                    .then(() => {
-                        // Then add user as group member
-                        axios
-                            .post(`${host}/api/groups/${res.data.id}/groupMembers`, userId)
-                            .then(() => {
-                                // Then add to group activities and update groups
-                                axios
-                                    .then(() => this.props.updateGroups())
-                            })
-                    })
+                // this.setState({ group: res.data })
+                console.log(res.data)
+                
             }
         } catch (err) {
-            this.clearSearch();
-            this.setState({ error: { code: err.response.status, message: err.response.statusText } });
+            console.log(err)
         };
-
-        this.toggleInvite()
-
     };
  
     render() { 
@@ -76,7 +68,7 @@ class Recipe extends Component {
         }, '').slice(0, -2)
 
         return (  
-            <div className="" onClick={this.getRecipeData(data)}>
+            <div className="" onClick={this.handleLikeRecipe}>
 
                     <div className="">
                         <div className="">

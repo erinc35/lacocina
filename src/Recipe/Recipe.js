@@ -19,6 +19,37 @@ class Recipe extends Component {
         alert('heart')
     }
 
+    createRecipe = async (event) => {
+        event.preventDefault();
+        const userId = { userId: localStorage.getItem('userId') }
+        const activity = { userId: localStorage.getItem('userId'), activity: 'Created Recipe.' }
+        const RecipeData = { name: this.state.Recipe.name }
+
+        try {
+            // First Creat New Recipe
+            const res = await axios.post(`${host}/api/Recipes`, RecipeData)
+            if (res) {
+                this.setState({ Recipe: res.data })
+                // Then add user as Recipe owner
+                axios
+                    .post(`${host}/api/Recipes/${res.data.id}/RecipeOwners`, userId)
+                    .then(() => {
+                        // Then add user as Recipe member
+                        axios
+                            .post(`${host}/api/Recipes/${res.data.id}/RecipeMembers`, userId)
+                            .then(() => {
+                                // Then add to Recipe activities and update Recipes
+                                axios
+                                    .post(`${host}/api/Recipes/${res.data.id}/activities`, activity)
+                                    .then(() => this.props.updateRecipes())
+                            })
+                    })
+            }
+        } catch (err) {
+            this.clearSearch();
+            this.setState({ error: { code: err.response.status, message: err.response.statusText } });
+        };
+
     getRecipeData = (recipe) => _event => {
         //    JSON.stringify(recipe);
         // console.log("From handleClick: ", recipe)

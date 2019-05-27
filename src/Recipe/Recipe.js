@@ -7,7 +7,10 @@ import './Recipe.css';
 class Recipe extends Component {
     constructor(props) {
         super(props);
-        this.state = { recipe: {} }
+        this.state = { 
+            recipe: {},
+            liked: false
+     }
     }
 
     // componentDidMount() {
@@ -17,6 +20,12 @@ class Recipe extends Component {
         console.log(e.target.parentNode)
         e.preventDefault();
         alert('heart')
+    }
+
+    toggleLike = () => {
+        this.setState(prevState => ({
+            liked: !prevState.liked
+        }));
     }
 
     

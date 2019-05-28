@@ -68,6 +68,7 @@ class Recipe extends Component {
         } catch (err) {
             console.log(err)
         };
+        this.toggleLike();
     };
  
     render() { 
@@ -88,7 +89,7 @@ class Recipe extends Component {
                                 <strong><p className='recipe-name'>{data.label}</p></strong>
                                 <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
                                 <p className='back-item'><strong>Health labels:</strong> {labels}</p>     
-                                <i className="far fa-heart heart"></i>                           
+                            <i className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}></i>                           
                             </div>
                         </div>
 

@@ -58,11 +58,15 @@ class Recipe extends Component {
         }
         console.log(currentRecipe)
         try {
-            // First Creat New Group
+            // First Creat New Recipe
             const res = await axios.post(`${host}/api/recipes`, currentRecipe)
             if (res) {
-                // this.setState({ group: res.data })
-                console.log(res.data)
+                // this.setState({ recipe: res.data })
+                axios
+                    .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
+                    .then(res => {
+                        console.log(res)
+                    })
                 
             }
         } catch (err) {
@@ -80,7 +84,7 @@ class Recipe extends Component {
         }, '').slice(0, -2)
 
         return (  
-            <div className="" onClick={this.handleLikeRecipe}>
+            <div className="" >
 
                     <div className="">
                         <div className="">
@@ -89,7 +93,10 @@ class Recipe extends Component {
                                 <strong><p className='recipe-name'>{data.label}</p></strong>
                                 <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
                                 <p className='back-item'><strong>Health labels:</strong> {labels}</p>     
-                            <i className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}></i>                           
+                                <i 
+                                    onClick={this.handleLikeRecipe} 
+                                    className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
+                                </i>                           
                             </div>
                         </div>
 

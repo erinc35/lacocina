@@ -44,6 +44,24 @@ class Recipe extends Component {
         // console.log(currentRecipe)
     }
 
+    addRecipe = async (currentRecipe, userId) => {
+        try {
+            // First Create New Recipe
+            const res = await axios.post(`${host}/api/recipes`, currentRecipe)
+            if (res) {
+                // this.setState({ recipe: res.data })
+                axios
+                    .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
+                    .then(res => {
+                        console.log(res)
+                    })
+
+            }
+        } catch (err) {
+            console.log(err)
+        };
+    }
+
 
     handleLikeRecipe = async (event) => {
         event.preventDefault();
@@ -56,22 +74,23 @@ class Recipe extends Component {
             'calories': calories,
             'url': url
         }
-        console.log(currentRecipe)
-        try {
-            // First Creat New Recipe
-            const res = await axios.post(`${host}/api/recipes`, currentRecipe)
-            if (res) {
-                // this.setState({ recipe: res.data })
-                axios
-                    .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
-                    .then(res => {
-                        console.log(res)
-                    })
+        // console.log(currentRecipe)
+        // try {
+        //     // First Create New Recipe
+        //     const res = await axios.post(`${host}/api/recipes`, currentRecipe)
+        //     if (res) {
+        //         // this.setState({ recipe: res.data })
+        //         axios
+        //             .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
+        //             .then(res => {
+        //                 console.log(res)
+        //             })
                 
-            }
-        } catch (err) {
-            console.log(err)
-        };
+        //     }
+        // } catch (err) {
+        //     console.log(err)
+        // };
+        this.addRecipe(currentRecipe, userId)
         this.toggleLike();
     };
  

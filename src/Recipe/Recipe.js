@@ -62,6 +62,24 @@ class Recipe extends Component {
         };
     }
 
+    deleteRecipe = async (currentRecipe, userId) => {
+        try {
+            // First Create New Recipe
+            const res = await axios.delete(`${host}/api/recipes`, currentRecipe)
+            if (res) {
+                // this.setState({ recipe: res.data })
+                axios
+                    .delete(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
+                    .then(res => {
+                        console.log(res)
+                    })
+
+            }
+        } catch (err) {
+            console.log(err)
+        };
+    }
+
 
     handleLikeRecipe = async (event) => {
         event.preventDefault();

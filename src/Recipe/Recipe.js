@@ -9,7 +9,8 @@ class Recipe extends Component {
         super(props);
         this.state = { 
             recipe: {},
-            liked: false
+            liked: false,
+            recipeId: ''
      }
     }
 
@@ -54,6 +55,7 @@ class Recipe extends Component {
                     .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
                     .then(res => {
                         console.log(res)
+                        this.setState({ recipeId: res.data[0].recipeId })                        
                     })
 
             }
@@ -65,7 +67,7 @@ class Recipe extends Component {
     deleteRecipe = async (currentRecipe, userId) => {
         try {
             // First Create New Recipe
-            const res = await axios.delete(`${host}/api/recipes`, currentRecipe)
+            const res = await axios.get(`${host}/api/recipes`, currentRecipe)
             if (res) {
                 // this.setState({ recipe: res.data })
                 axios
@@ -113,7 +115,7 @@ class Recipe extends Component {
     };
  
     render() { 
-        console.log(this.state.recipe)
+        console.log(this.state)
         let data = this.props.recipeData;
         let labelsArray = data.healthLabels;
         let labels = labelsArray.reduce((str, label) => {

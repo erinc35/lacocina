@@ -31,31 +31,32 @@ class Recipe extends Component {
 
     
 
-    getRecipeData = (recipe) => _event => {
-        //    JSON.stringify(recipe);
-        // console.log("From handleClick: ", recipe)
-        _event.preventDefault();
-        let currentRecipe = {
-            'name': recipe.label,
-            'image': recipe.image,
-            'calories': recipe.calories,
-            'url': recipe.url
-        }
-           this.setState({ recipe: currentRecipe })
-        // console.log(currentRecipe)
-    }
+    // getRecipeData = (recipe) => _event => {
+    //     //    JSON.stringify(recipe);
+    //     // console.log("From handleClick: ", recipe)
+    //     _event.preventDefault();
+    //     let currentRecipe = {
+    //         'name': recipe.label,
+    //         'image': recipe.image,
+    //         'calories': recipe.calories,
+    //         'url': recipe.url
+    //     }
+    //        this.setState({ recipe: currentRecipe })
+    //     // console.log(currentRecipe)
+    // }
 
     addRecipe = async (currentRecipe, userId) => {
         try {
             // First Create New Recipe
             const res = await axios.post(`${host}/api/recipes`, currentRecipe)
             if (res) {
-                // this.setState({ recipe: res.data })
+                console.log(res.data)
+                this.setState({ recipeId: res.data.id})                                        
                 axios
                     .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
                     .then(res => {
                         console.log(res)
-                        this.setState({ recipeId: res.data[0].recipeId })                        
+                        this.setState({ liked : true })
                     })
 
             }
@@ -64,19 +65,17 @@ class Recipe extends Component {
         };
     }
 
-    deleteRecipe = async (currentRecipe, userId) => {
-        try {
-            // First Create New Recipe
-            const res = await axios.get(`${host}/api/recipes`, currentRecipe)
-            if (res) {
-                // this.setState({ recipe: res.data })
-                axios
-                    .delete(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
-                    .then(res => {
-                        console.log(res)
-                    })
+    isLiked = () => {
+        
+    }
 
-            }
+    deleteRecipe = async (userId) => {
+        try {
+            axios
+                .delete(`${host}/api/recipes/${this.state.recipeId}/recipeOwners`, userId)
+                .then(res => {
+                    console.log(res)
+                })
         } catch (err) {
             console.log(err)
         };
@@ -111,7 +110,7 @@ class Recipe extends Component {
         //     console.log(err)
         // };
         this.addRecipe(currentRecipe, userId)
-        this.toggleLike();
+        // this.toggleLike();
     };
  
     render() { 

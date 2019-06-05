@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import host from '../host';
 import Recipe from '../Recipe/Recipe';
 import bread from '../images/bread.jpeg';
 import cookie from '../images/cookie.jpeg';
@@ -19,9 +20,17 @@ class QuickLinks extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            recipes: []
+            recipes: [],
+            recipesLiked: []
          }
     }
+
+    componentDidMount() {
+        this.getLikedRecipes();
+    }
+    
+
+    
 
     fetchQuickLink = e => {
         e.preventDefault();
@@ -73,7 +82,7 @@ class QuickLinks extends Component {
                 </div>
                 <div className='recipes' id='quicklinks'>
                     {this.state.recipes ? this.state.recipes.map(recipe => {
-                        return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)}/>;
+                        return <Recipe recipeData={recipe.recipe} recipesLiked={this.state.recipesLiked} key={Math.floor(recipe.recipe.calories)}/>;
                     }) : <div></div>
                     }
                 </div>

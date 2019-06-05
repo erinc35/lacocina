@@ -21,7 +21,8 @@ class Recipe extends Component {
     }
 
 
-    addRecipe = async (currentRecipe, userId) => {
+    addRecipe = (currentRecipe, userId) => async _event => {
+        _event.preventDefault();
         try {
             // First Create New Recipe
             const res = await axios.post(`${host}/api/recipes`, currentRecipe)
@@ -81,16 +82,29 @@ class Recipe extends Component {
         }
     }
 
-    deleteRecipe = async (userId) => {
-        try {
-            axios
-                .delete(`${host}/api/recipes/${this.state.recipeId}/recipeOwners`, userId)
-                .then(res => {
-                    console.log(res)
-                })
-        } catch (err) {
-            console.log(err)
-        };
+    // deleteRecipe = async (userId) => {
+    //     alert('buu')
+    //     // try {
+    //     //     axios
+    //     //         .delete(`${host}/api/recipes/${this.state.recipeId}/recipeOwners`, userId)
+    //     //         .then(res => {
+    //     //             console.log(res)
+    //     //         })
+    //     // } catch (err) {
+    //     //     console.log(err)
+    //     // };
+    // }
+    deleteRecipe =  () => {
+        alert('buu')
+        // try {
+        //     axios
+        //         .delete(`${host}/api/recipes/${this.state.recipeId}/recipeOwners`, userId)
+        //         .then(res => {
+        //             console.log(res)
+        //         })
+        // } catch (err) {
+        //     console.log(err)
+        // };
     }
 
 
@@ -105,6 +119,7 @@ class Recipe extends Component {
             'url': url
         }
         this.addRecipe(currentRecipe, userId)
+        {this.state.liked ? this.deleteRecipe() : this.addRecipe()}
         // this.toggleLike();
     };
  

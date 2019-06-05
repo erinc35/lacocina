@@ -20,11 +20,27 @@ class Recipe extends Component {
         this.isLiked();
     }
 
+    handleLikeRecipe = async (event) => {
+        event.preventDefault();
+        let { label, image, calories, url } = this.props.recipeData
+        const userId = { userId: localStorage.getItem('userId') }
+        let currentRecipe = {
+            'name': label,
+            'image': image,
+            'calories': calories,
+            'url': url
+        }
+        // this.addRecipe(currentRecipe, userId)
+        { this.state.liked ? this.deleteRecipe(userId) : this.addRecipe(currentRecipe, userId) }
+        // this.toggleLike();
+    };
 
-    addRecipe = (currentRecipe, userId) => async _event => {
-        _event.preventDefault();
+
+    addRecipe = async (currentRecipe, userId) => { //curried
+        // _event.preventDefault();
         try {
             // First Create New Recipe
+            console.log('add')
             const res = await axios.post(`${host}/api/recipes`, currentRecipe)
             if (res) {
                 console.log(res.data)
@@ -40,13 +56,27 @@ class Recipe extends Component {
         } catch (err) {
             console.log(err)
         };
+        this.isLiked();
+        
     }
 
-    handleClickHeart = e => {
-        console.log(e.target.parentNode)
-        e.preventDefault();
-        alert('heart')
+    deleteRecipe = (userId) => {
+        try {
+            axios
+                .delete(`${host}/api/recipes/${this.state.recipeId}/recipeOwners`, userId)
+                .then(res => {
+                    console.log(res)
+                })
+        } catch (err) {
+            console.log(err)
+        };
     }
+
+    // handleClickHeart = e => {
+    //     console.log(e.target.parentNode)
+    //     e.preventDefault();
+    //     alert('heart')
+    // }
 
     toggleLike = () => {
         this.setState(prevState => ({
@@ -82,46 +112,10 @@ class Recipe extends Component {
         }
     }
 
-    // deleteRecipe = async (userId) => {
-    //     alert('buu')
-    //     // try {
-    //     //     axios
-    //     //         .delete(`${host}/api/recipes/${this.state.recipeId}/recipeOwners`, userId)
-    //     //         .then(res => {
-    //     //             console.log(res)
-    //     //         })
-    //     // } catch (err) {
-    //     //     console.log(err)
-    //     // };
-    // }
-    deleteRecipe =  () => {
-        alert('buu')
-        // try {
-        //     axios
-        //         .delete(`${host}/api/recipes/${this.state.recipeId}/recipeOwners`, userId)
-        //         .then(res => {
-        //             console.log(res)
-        //         })
-        // } catch (err) {
-        //     console.log(err)
-        // };
-    }
 
 
-    handleLikeRecipe = async (event) => {
-        event.preventDefault();
-        let { label, image, calories, url } = this.props.recipeData
-        const userId = { userId: localStorage.getItem('userId') }
-        let currentRecipe = {
-            'name': label,
-            'image': image,
-            'calories': calories,
-            'url': url
-        }
-        this.addRecipe(currentRecipe, userId)
-        {this.state.liked ? this.deleteRecipe() : this.addRecipe()}
-        // this.toggleLike();
-    };
+
+    
  
     render() { 
 
@@ -141,7 +135,7 @@ class Recipe extends Component {
                                 <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
                                 <p className='back-item'><strong>Health labels:</strong> {labels}</p>     
                                 <i 
-                                    onClick={this.handleLikeRecipe} 
+                                    onClick={(e) => this.handleLikeRecipe(e)} 
                                     className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
                                 </i>                           
                             </div>

@@ -15,28 +15,11 @@ class Recipe extends Component {
      }
     }
 
-    // static getDerivedStateFromProps() {
-    //     return {}
-    // }
-
     componentDidMount() {
         
         this.isLiked();
     }
 
-
-    // getLikedRecipes = async () => {
-    //     try {
-    //         let userId = localStorage.getItem('userId')
-    //         const res = await axios.get(`${host}/api/users/${userId}/recipes`)
-    //         if (res) {
-    //             // console.log(res.data)
-    //             this.setState({ recipesLiked: res.data })
-    //         }
-    //     } catch (err) {
-    //         console.log(err)
-    //     };
-    // }
 
     addRecipe = async (currentRecipe, userId) => {
         try {
@@ -115,29 +98,12 @@ class Recipe extends Component {
         event.preventDefault();
         let { label, image, calories, url } = this.props.recipeData
         const userId = { userId: localStorage.getItem('userId') }
-        // const recipeData = this.state.recipe
         let currentRecipe = {
             'name': label,
             'image': image,
             'calories': calories,
             'url': url
         }
-        // console.log(currentRecipe)
-        // try {
-        //     // First Create New Recipe
-        //     const res = await axios.post(`${host}/api/recipes`, currentRecipe)
-        //     if (res) {
-        //         // this.setState({ recipe: res.data })
-        //         axios
-        //             .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
-        //             .then(res => {
-        //                 console.log(res)
-        //             })
-                
-        //     }
-        // } catch (err) {
-        //     console.log(err)
-        // };
         this.addRecipe(currentRecipe, userId)
         // this.toggleLike();
     };

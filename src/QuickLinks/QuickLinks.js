@@ -30,7 +30,18 @@ class QuickLinks extends Component {
     }
     
 
-    
+    getLikedRecipes = async () => {
+        try {
+            let userId = localStorage.getItem('userId')
+            const res = await axios.get(`${host}/api/users/${userId}/recipes`)
+            if (res) {
+                // console.log(res.data)
+                this.setState({ recipesLiked: res.data })
+            }
+        } catch (err) {
+            console.log(err)
+        };
+    }
 
     fetchQuickLink = e => {
         e.preventDefault();

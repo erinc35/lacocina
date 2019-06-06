@@ -28,14 +28,14 @@ class QuickLinks extends Component {
     componentDidMount() {
         this.getLikedRecipes();
     }
-    
+
 
     getLikedRecipes = async () => {
         try {
             let userId = localStorage.getItem('userId')
             const res = await axios.get(`${host}/api/users/${userId}/recipes`)
             if (res) {
-                // console.log(res.data)
+                console.log(res.data)
                 this.setState({ recipesLiked: res.data })
             }
         } catch (err) {
@@ -63,6 +63,7 @@ class QuickLinks extends Component {
 
     render() { 
         this.props.recepieFadeIn();
+        console.log('quicklinks render')
         return ( 
             <div>
                 <div className='quicklinks'>

@@ -56,8 +56,22 @@ class Recipe extends Component {
         } catch (err) {
             console.log(err)
         };
-        this.isLiked();
+        // this.isLiked();
+        this.setState(this.state)
         
+    }
+
+    getLikedRecipes = async () => {
+        try {
+            let userId = localStorage.getItem('userId')
+            const res = await axios.get(`${host}/api/users/${userId}/recipes`)
+            if (res) {
+                console.log(res.data)
+                this.setState({ recipesLiked: res.data })
+            }
+        } catch (err) {
+            console.log(err)
+        };
     }
 
     deleteRecipe = (userId) => {
@@ -85,37 +99,16 @@ class Recipe extends Component {
     }
 
     
-
-    // getRecipeData = (recipe) => _event => {
-    //     //    JSON.stringify(recipe);
-    //     // console.log("From handleClick: ", recipe)
-    //     _event.preventDefault();
-    //     let currentRecipe = {
-    //         'name': recipe.label,
-    //         'image': recipe.image,
-    //         'calories': recipe.calories,
-    //         'url': recipe.url
-    //     }
-    //        this.setState({ recipe: currentRecipe })
-    //     // console.log(currentRecipe)
-    // }
-
-    
-
     isLiked = () => {
         // console.log('isliked', this.props.recipesLiked)
         let recipeName = this.props.recipeData.label;
-        if(this.props.recipesLiked.some(recipe => {
+        if (this.props.recipesLiked && this.props.recipesLiked.some(recipe => {
             return recipe.RecipeName === recipeName
         })){
             this.setState({ liked: true})
         }
     }
 
-
-
-
-    
  
     render() { 
 

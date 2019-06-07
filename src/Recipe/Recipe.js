@@ -16,9 +16,7 @@ class Recipe extends Component {
     }
 
     componentDidMount() {
-        console.log('cdm')
         this.getLikedRecipes();
-        // this.isLiked();
     }
 
     handleLikeRecipe = async (event) => {
@@ -32,7 +30,7 @@ class Recipe extends Component {
             'url': url
         }
         // this.addRecipe(currentRecipe, userId)
-        { this.state.liked ? this.deleteRecipe(userId) : this.addRecipe(currentRecipe, userId) }
+        { this.state.liked ? this.deleteRecipe(userId.userId) : this.addRecipe(currentRecipe, userId) }
         // this.toggleLike();
     };
 
@@ -49,7 +47,7 @@ class Recipe extends Component {
                 axios
                     .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
                     .then(res => {
-                        console.log(res)
+                        // console.log(res)
                         this.setState({ liked: true })
                     })
 
@@ -58,6 +56,30 @@ class Recipe extends Component {
             console.log(err)
         };
         // this.isLiked();
+        this.setState(this.state)
+        
+    }
+    deleteRecipe = async (userId) => {
+        console.log(this.state.recipesLiked)
+        try {
+            let recipesLiked = this.state.recipesLiked; //array of objects
+            let recipe = recipesLiked.filter(recipe => {
+                return recipe.RecipeName === this.props.recipeData.label;
+            })
+            let recipeId = recipe[0].recipeId
+            //need recipeId
+
+
+            const res = await axios.delete(`${host}/api/recipes/${recipeId}/recipeOwners/${userId}`)
+            if (res) {
+
+                console.log(res)
+                this.setState({ liked: false })
+
+            }
+        } catch (err) {
+            console.log(err)
+        };
         this.setState(this.state)
         
     }
@@ -82,17 +104,7 @@ class Recipe extends Component {
 
     }
 
-    deleteRecipe = (userId) => {
-        try {
-            axios
-                .delete(`${host}/api/recipes/${this.state.recipeId}/recipeOwners`, userId)
-                .then(res => {
-                    console.log(res)
-                })
-        } catch (err) {
-            console.log(err)
-        };
-    }
+    
 
     // handleClickHeart = e => {
     //     console.log(e.target.parentNode)
@@ -107,18 +119,19 @@ class Recipe extends Component {
     }
 
     
-    isLiked = () => {
-        console.log('isliked', this.state.recipesLiked)
-        let recipeName = this.props.recipeData.label;
-        if (this.state.recipesLiked && this.state.recipesLiked.some(recipe => {
-            return recipe.RecipeName === recipeName
-        })){
-            this.setState({ liked: true})
-        }
-    }
+    // isLiked = () => {
+    //     console.log('isliked', this.state.recipesLiked)
+    //     let recipeName = this.props.recipeData.label;
+    //     if (this.state.recipesLiked && this.state.recipesLiked.some(recipe => {
+    //         return recipe.RecipeName === recipeName
+    //     })){
+    //         this.setState({ liked: true})
+    //     }
+    // }
 
  
     render() { 
+        // console.log(this.state.recipesLiked)
 
         let data = this.props.recipeData;
         let labelsArray = data.healthLabels;

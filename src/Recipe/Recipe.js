@@ -43,7 +43,6 @@ class Recipe extends Component {
                 axios
                     .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
                     .then(res => {
-                        console.log('adding recipe', res)
                         this.setState({ liked: true })
                         this.getLikedRecipes();
                     })
@@ -55,32 +54,21 @@ class Recipe extends Component {
 
     deleteRecipe = async (userId) => {
         this.getLikedRecipes();
-        console.log(1)
-        
-        console.log('inside deleteREcipe', this.state.recipesLiked)
-        
+
         try {
             let recipesLiked = this.state.recipesLiked; //array of objects
             let recipe = recipesLiked.filter(recipe => {
                 return recipe.RecipeName === this.props.recipeData.label;
             })
             let recipeId = recipe[0].recipeId
-            //need recipeId
-
-
             const res = await axios.delete(`${host}/api/recipes/${recipeId}/recipeOwners/${userId}`)
             if (res) {
-
-                console.log(res)
                 this.setState({ liked: false })
-                console.log(2)
-                
             }
         } catch (err) {
             console.log(err)
         };
         this.setState(this.state)
-        
     }
 
     getLikedRecipes = async () => {
@@ -88,7 +76,6 @@ class Recipe extends Component {
             let userId = localStorage.getItem('userId')
             const res = await axios.get(`${host}/api/users/${userId}/recipes`)
             if (res) {
-                console.log('getLikedREcipes', res.data)
                 this.setState({ recipesLiked: res.data })
             }
         } catch (err) {
@@ -102,13 +89,6 @@ class Recipe extends Component {
         }
     }
 
-    
-
-    // handleClickHeart = e => {
-    //     console.log(e.target.parentNode)
-    //     e.preventDefault();
-    //     alert('heart')
-    // }
 
     toggleLike = () => {
         this.setState(prevState => ({
@@ -116,20 +96,7 @@ class Recipe extends Component {
         }));
     }
 
-    
-    // isLiked = () => {
-    //     console.log('isliked', this.state.recipesLiked)
-    //     let recipeName = this.props.recipeData.label;
-    //     if (this.state.recipesLiked && this.state.recipesLiked.some(recipe => {
-    //         return recipe.RecipeName === recipeName
-    //     })){
-    //         this.setState({ liked: true})
-    //     }
-    // }
-
- 
     render() { 
-        // console.log(this.state.recipesLiked)
 
         let data = this.props.recipeData;
         let labelsArray = data.healthLabels;

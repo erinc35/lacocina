@@ -35,32 +35,30 @@ class Recipe extends Component {
     };
 
 
-    addRecipe = async (currentRecipe, userId) => { //curried
-        // _event.preventDefault();
+    addRecipe = async (currentRecipe, userId) => { 
         try {
-            // First Create New Recipe
-            console.log('add')
             const res = await axios.post(`${host}/api/recipes`, currentRecipe)
             if (res) {
-                console.log(res.data)
                 this.setState({ recipeId: res.data.id })
                 axios
                     .post(`${host}/api/recipes/${res.data.id}/recipeOwners`, userId)
                     .then(res => {
-                        // console.log(res)
+                        console.log('adding recipe', res)
                         this.setState({ liked: true })
+                        this.getLikedRecipes();
                     })
-
             }
         } catch (err) {
             console.log(err)
         };
-        // this.isLiked();
-        this.setState(this.state)
-        
     }
+
     deleteRecipe = async (userId) => {
-        console.log(this.state.recipesLiked)
+        this.getLikedRecipes();
+        console.log(1)
+        
+        console.log('inside deleteREcipe', this.state.recipesLiked)
+        
         try {
             let recipesLiked = this.state.recipesLiked; //array of objects
             let recipe = recipesLiked.filter(recipe => {
@@ -75,7 +73,8 @@ class Recipe extends Component {
 
                 console.log(res)
                 this.setState({ liked: false })
-
+                console.log(2)
+                
             }
         } catch (err) {
             console.log(err)
@@ -89,7 +88,7 @@ class Recipe extends Component {
             let userId = localStorage.getItem('userId')
             const res = await axios.get(`${host}/api/users/${userId}/recipes`)
             if (res) {
-                // console.log(res.data)
+                console.log('getLikedREcipes', res.data)
                 this.setState({ recipesLiked: res.data })
             }
         } catch (err) {
@@ -101,7 +100,6 @@ class Recipe extends Component {
         })) {
             this.setState({ liked: true })
         }
-
     }
 
     

@@ -33,7 +33,7 @@ export default class Auth {
                     const id = user.data.id;
                     if (user && id) {
                         localStorage.setItem('userId', id)
-                        const route = `/user/${id} `
+                        const route = `/`
                         this.setSession(authResult, route)
                     }
                 } catch (err) {
@@ -47,6 +47,7 @@ export default class Auth {
                 alert(`Error: ${err.error}.Check the console for further details.`);
             }
         });
+
     }
 
     getAccessToken = () => {

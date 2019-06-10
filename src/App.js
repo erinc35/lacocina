@@ -24,6 +24,7 @@ class App extends Component {
         <header className="App-header">
           <Search id={id} login={auth.login} logout={auth.logout} isAuthenticated={auth.isAuthenticated}/>
           {/* <Route exact path="/" component={Recipe} /> */}
+          {/* <Route exact path="/" component={App} /> */}
           <Route exact path="/authenticating" render={(props) => {
             handleAuthentication(props);
             return <Authenticating {...props} />

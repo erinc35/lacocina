@@ -68,7 +68,6 @@ class Recipe extends Component {
         } catch (err) {
             console.log(err)
         };
-
     }
 
     getLikedRecipes = async () => {

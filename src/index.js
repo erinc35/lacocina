@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from "react-router-dom";
+import { Router } from "react-router-dom";
 import './index.css';
+import history from './history';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 require('dotenv').config();
@@ -9,7 +10,7 @@ require('dotenv').config();
 
 
 ReactDOM.render(
-    <Router>
+    <Router history={history}>
         <App />
     </Router>, 
     document.getElementById('root'));

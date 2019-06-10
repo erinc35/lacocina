@@ -20,7 +20,7 @@ export default class Auth {
     });
 
     login = () => {
-        this.auth0.authorize();
+        this.auth0.authorize();        
     }
 
     handleAuthentication = () => {
@@ -47,7 +47,6 @@ export default class Auth {
                 alert(`Error: ${err.error}.Check the console for further details.`);
             }
         });
-
     }
 
     getAccessToken = () => {
@@ -71,20 +70,9 @@ export default class Auth {
         // Navigate to the route only if route passed. Stops renew session to redirect back to home
         if (route) {
             history.replace(route);
+            
         }
 
-    }
-
-    renewSession = () => {
-        this.auth0.checkSession({}, (err, authResult) => {
-            if (authResult && authResult.accessToken && authResult.idToken) {
-                this.setSession(authResult);
-            } else if (err) {
-                this.logout();
-                console.log(err);
-                alert(`Could not get a new token(${err.error}: ${err.error_description}).`);
-            }
-        });
     }
 
     logout = () => {

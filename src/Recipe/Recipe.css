@@ -39,6 +39,10 @@
     height: 463px;
 }
 
+.recipe-url:hover {
+    text-decoration: none;
+}
+
 .empty-heart {
     position: absolute;
     top: 10px;

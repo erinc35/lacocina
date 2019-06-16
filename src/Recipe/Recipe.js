@@ -104,34 +104,33 @@ class Recipe extends Component {
         }, '').slice(0, -2)
         return (  
             <div className="" >
-
-                    <div className="">
-                        <div className="">
-                            <div className='recipe-card recipe-front'>
-                                <img src={data.image} alt={data.label} className='recipe-img' />
-                                <strong><p className='recipe-name'>{data.label}</p></strong>
-                                <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
-                                <p className='back-item'><strong>Health labels:</strong> {labels}</p>     
-                                <i 
-                                    onClick={(e) => this.handleLikeRecipe(e)} 
-                                    className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
-                                </i>                           
-                            </div>
+                <div className="">
+                    <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
+                        <div className='recipe-card recipe-front'>
+                            <img src={data.image} alt={data.label} className='recipe-img' />
+                            <strong><p className='recipe-name'>{data.label}</p></strong>
+                            <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
+                            <p className='back-item'><strong>Health labels:</strong> {labels}</p>     
+                            <i 
+                                onClick={(e) => this.handleLikeRecipe(e)} 
+                                className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
+                            </i>                           
                         </div>
+                    </a>
 
-                        {/* <div className="">
-                            <div className='recipe-card recipe-back'>
-                                <h2>{data.label}</h2>
-                                <p className='recipe-source'><strong>Source:</strong> {data.source}</p>
-                                <p className='recipe-name'><strong>Ingredients:</strong></p>      
-                                {data.ingredientLines.map((ing, ind) => {
-                                    return <li key={ind} className='back-item'>{ing}</li>                              
-                                })}                          
-                            </div>
-                        </div> */}
+                    {/* <div className="">
+                        <div className='recipe-card recipe-back'>
+                            <h2>{data.label}</h2>
+                            <p className='recipe-source'><strong>Source:</strong> {data.source}</p>
+                            <p className='recipe-name'><strong>Ingredients:</strong></p>      
+                            {data.ingredientLines.map((ing, ind) => {
+                                return <li key={ind} className='back-item'>{ing}</li>                              
+                            })}                          
+                        </div>
+                    </div> */}
 
-                    </div>
                 </div>
+            </div>
         );
     }
 }

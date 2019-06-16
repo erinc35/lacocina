@@ -4,9 +4,9 @@
     width: 280px;;
     /* max-width: 20%; */
     border: 1px solid beige;
-    min-height: 457px;
+    min-height: 490px;
     border-radius: 4%;
-    height: 457px;
+    height: 490px;
     color: black
 }
 
@@ -35,9 +35,9 @@
     overflow: scroll;
 }
 
-.recipe-front {
+/* .recipe-front {
     height: 463px;
-}
+} */
 
 .recipe-url:hover {
     text-decoration: none;

@@ -45,7 +45,7 @@ class QuickLinks extends Component {
 
     fetchQuickLink = e => {
         e.preventDefault();
-        let recipes = $('#search')[0];
+        // let recipes = $('#search')[0];
         this.setState({
             recipes: []
         })

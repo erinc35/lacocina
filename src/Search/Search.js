@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { Link} from 'react-router-dom';
 import QuickLinks from '../QuickLinks/QuickLinks';
 import Recipe from '../Recipe/Recipe';
-import SearchForm from '../SearchForm/SearchForm';
 import RecentSearch from '../RecentSearch/RecentSearch';
 import './Search.css';
 import axios from 'axios';
 import $ from 'jquery';
-import {TweenMax, TweenLite} from "gsap";
+import {TweenMax} from "gsap";
 
 
 let app_id = process.env.REACT_APP_YOUR_APP_ID;

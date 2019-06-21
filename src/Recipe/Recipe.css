@@ -39,6 +39,10 @@
     height: 463px;
 } */
 
+.recipe-url {
+    color: black;    
+}
+
 .recipe-url:hover {
     text-decoration: none;
 }

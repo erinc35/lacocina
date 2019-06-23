@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Search from './Search/Search';
+import Navigation from './Navigation/Navigation';
 import Auth from './Auth/Auth';
 import Authenticating from './Auth/Authenticating';
 import './App.css';
@@ -23,6 +24,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <Search id={id} login={auth.login} logout={auth.logout} isAuthenticated={auth.isAuthenticated}/>
+          <Navigation login={auth.login} logout={auth.logout} isAuthenticated={auth.isAuthenticated} />          
           {/* <Route exact path="/" component={Recipe} /> */}
           {/* <Route exact path="/" component={App} /> */}
           <Route exact path="/authenticating" render={(props) => {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link} from 'react-router-dom';
 import QuickLinks from '../QuickLinks/QuickLinks';
+import Navigation from '../Navigation/Navigation';
 import Recipe from '../Recipe/Recipe';
 import RecentSearch from '../RecentSearch/RecentSearch';
 import './Search.css';
@@ -168,8 +169,8 @@ class Search extends Component {
         // }
         return (  
             <div>
+                <Navigation />
                 <div className='search-header'>
-                    <h1 className="app-title">la cocina</h1>  
                     {this.props.isAuthenticated()
                         ? 
                         <Link to={`/`} onClick={this.props.logout}>Logout</Link> : <Link to={`/authenticating`} onClick={this.props.login}>Login</Link>

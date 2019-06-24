@@ -8,6 +8,8 @@ import {
     Nav,
     NavItem,
     NavLink} from 'reactstrap';
+import './Navigation.css';
+    
 
 class Navigation extends Component {
 
@@ -27,29 +29,27 @@ class Navigation extends Component {
 
     render() {
         return (
-            <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">
-                        <h1 className="app-title">la cocina</h1>                          
-                    </NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink to={`/`}>Favorites </NavLink>                             
-                            </NavItem>
-                            <NavItem>
-                                {this.props.isAuthenticated()
-                                    ?
-                                    <NavLink to={`/`} onClick={this.props.logout}>Logout</NavLink> : 
-                                    <NavLink to={`/authenticating`} onClick={this.props.login}>Login</NavLink>
-                                }
-                            </NavItem>
-                            
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </div>
+            <Navbar expand="md" className='navbar'>
+                <NavbarBrand href="/">
+                    <h1 className="app-title">la cocina</h1>                          
+                </NavbarBrand>
+                <NavbarToggler onClick={this.toggle} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <NavLink to={`/`}>Favorites </NavLink>                             
+                        </NavItem>
+                        <NavItem>
+                            {this.props.isAuthenticated()
+                                ?
+                                <NavLink to={`/`} onClick={this.props.logout}>Logout</NavLink> : 
+                                <NavLink to={`/authenticating`} onClick={this.props.login}>Login</NavLink>
+                            }
+                        </NavItem>
+                        
+                    </Nav>
+                </Collapse>
+            </Navbar>
         );
     }
 }

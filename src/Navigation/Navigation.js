@@ -35,18 +35,20 @@ class Navigation extends Component {
                 </NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                        <NavItem>
-                            <NavLink to={`/`}>Favorites </NavLink>                             
-                        </NavItem>
+                    <Nav className="ml-auto" navbar> 
                         <NavItem>
                             {this.props.isAuthenticated()
                                 ?
-                                <NavLink to={`/`} onClick={this.props.logout}>Logout</NavLink> : 
-                                <NavLink to={`/authenticating`} onClick={this.props.login}>Login</NavLink>
-                            }
+                            <NavLink to={`/`}>{localStorage.getItem('displayName')}'s Favorites </NavLink> :
+                            null  }                          
                         </NavItem>
-                        
+                        <NavItem>
+                                {this.props.isAuthenticated()
+                                    ?
+                                    <NavLink to={`/`} onClick={this.props.logout}>Logout</NavLink> : 
+                                    <NavLink to={`/authenticating`} onClick={this.props.login}>Login</NavLink>
+                                }
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>

@@ -31,8 +31,10 @@ export default class Auth {
                     const user = await axios.post(`${host}/api/users`, authResult.idTokenPayload)
                     console.log(user)
                     const id = user.data.id;
+                    const displayName = user.data.displayName;                    
                     if (user && id) {
                         localStorage.setItem('userId', id)
+                        localStorage.setItem('displayName', displayName)                        
                         const route = `/`
                         this.setSession(authResult, route)
                     }
@@ -85,6 +87,8 @@ export default class Auth {
         // Remove isLoggedIn flag from localStorage
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('userId');
+        localStorage.removeItem('displayName');
+        
 
         // navigate to the home route
         history.replace('/');

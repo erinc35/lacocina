@@ -26,7 +26,6 @@ class Navigation extends Component {
     }
 
     render() {
-
         return (
             <div>
                 <Navbar color="light" light expand="md">
@@ -37,13 +36,13 @@ class Navigation extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">Components</NavLink>
+                                <NavLink to={`/`}>Favorites </NavLink>                             
                             </NavItem>
                             <NavItem>
-                                {this.props.isAuthenticated
+                                {this.props.isAuthenticated()
                                     ?
-                                    <Link to={`/`} onClick={this.props.logout}>Logout</Link> : 
-                                    <Link to={`/authenticating`} onClick={this.props.login}>Login</Link>
+                                    <NavLink to={`/`} onClick={this.props.logout}>Logout</NavLink> : 
+                                    <NavLink to={`/authenticating`} onClick={this.props.login}>Login</NavLink>
                                 }
                             </NavItem>
                             

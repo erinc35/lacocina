@@ -11,13 +11,10 @@ class App extends Component {
   
   render() {
     const id = localStorage.getItem('userId');
-    console.log(this.props)
     return (
       <div className="App">
         <header className="App-header">
-          
           <Navigation id={id} login={this.props.auth.login} logout={this.props.auth.logout} isAuthenticated={this.props.auth.isAuthenticated} />
-
         </header>
       </div>
     );

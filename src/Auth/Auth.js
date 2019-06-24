@@ -20,6 +20,7 @@ export default class Auth {
     });
 
     login = () => {
+        alert('dd')
         this.auth0.authorize();        
     }
 
@@ -77,6 +78,8 @@ export default class Auth {
 
     logout = () => {
         // Remove tokens and expiry time
+        alert('logout')
+        
         this.accessToken = null;
         this.idToken = null;
         this.expiresAt = 0;

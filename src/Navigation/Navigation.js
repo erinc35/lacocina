@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import {
     Collapse,
     Navbar,
@@ -6,9 +7,10 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,} from 'reactstrap';
+    NavLink} from 'reactstrap';
 
-export default class Navigation extends React.Component {
+class Navigation extends Component {
+
     constructor(props) {
         super(props);
 
@@ -24,6 +26,7 @@ export default class Navigation extends React.Component {
     }
 
     render() {
+
         return (
             <div>
                 <Navbar color="light" light expand="md">
@@ -37,7 +40,11 @@ export default class Navigation extends React.Component {
                                 <NavLink href="/components/">Components</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                                {this.props.isAuthenticated
+                                    ?
+                                    <Link to={`/`} onClick={this.props.logout}>Logout</Link> : 
+                                    <Link to={`/authenticating`} onClick={this.props.login}>Login</Link>
+                                }
                             </NavItem>
                             
                         </Nav>
@@ -47,3 +54,5 @@ export default class Navigation extends React.Component {
         );
     }
 }
+
+export default Navigation;

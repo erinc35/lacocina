@@ -1,20 +1,16 @@
 import React, { Component } from "react";
-import { Link} from 'react-router-dom';
 import QuickLinks from '../QuickLinks/QuickLinks';
-import Navigation from '../Navigation/Navigation';
+// import Navigation from '../Navigation/Navigation';
 import Recipe from '../Recipe/Recipe';
 import RecentSearch from '../RecentSearch/RecentSearch';
 import './Search.css';
 import axios from 'axios';
 import $ from 'jquery';
 import {TweenMax} from "gsap";
-
-
+// import { Link } from 'react-router-dom';
 
 let app_id = process.env.REACT_APP_YOUR_APP_ID;
 let app_key = process.env.REACT_APP_YOUR_APP_KEY;
-
-
 
 class Search extends Component {
     constructor(props) {
@@ -38,7 +34,6 @@ class Search extends Component {
     componentDidMount() {
         TweenMax.from(".app-title", 4, {opacity: 0.1, marginLeft: 200})
         this.setState({ recentSearch: JSON.parse(localStorage.getItem('recentSearch'))})
-        document.cookie = 'color: blue; expires= Thu, 30 Aug 2019 19:00:00 UTC'
 
     }
 
@@ -163,18 +158,20 @@ class Search extends Component {
     }
 
     render() { 
+        // console.log(this.props)        
+        // console.log(this.props.isAuthenticated)
         this.recepieFadeIn();
         // if(this.state.recipes.length === 0) {
         //     return <div>buu</div>
         // }
         return (  
             <div>
-                <Navigation />
+                {/* <Navigation /> */}
                 <div className='search-header'>
-                    {this.props.isAuthenticated()
+                    {/* {this.props.isAuthenticated
                         ? 
                         <Link to={`/`} onClick={this.props.logout}>Logout</Link> : <Link to={`/authenticating`} onClick={this.props.login}>Login</Link>
-                    }
+                    } */}
                     <div className="search-wrap">
                             <form onSubmit={this.searchRecipe}>
                                 <div className="form-group row">

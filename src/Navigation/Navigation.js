@@ -43,11 +43,11 @@ class Navigation extends Component {
                             null  }                          
                         </NavItem>
                         <NavItem>
-                                {this.props.isAuthenticated()
-                                    ?
-                                    <NavLink to={`/`} onClick={this.props.logout}>Logout</NavLink> : 
-                                    <NavLink to={`/authenticating`} onClick={this.props.login}>Login</NavLink>
-                                }
+                            {this.props.isAuthenticated()
+                                ?
+                                <NavLink to={`/`} onClick={this.props.logout}>Logout</NavLink> : 
+                                <NavLink to={`/authenticating`} onClick={this.props.login}>Login</NavLink>
+                            }
                         </NavItem>
                     </Nav>
                 </Collapse>

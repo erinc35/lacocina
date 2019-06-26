@@ -7,7 +7,7 @@ const RecentSearch =  props => {
     return(
         <div className='recent-wrapper'>
             {inputs.map((input, ind) => {
-                return <button onClick={(e) => this.props.handleRecentSearch(e,input)} key={ind} className='recent-button'>{input}</button>
+                return <button onClick={(e) => props.handleRecentSearch(e,input)} key={ind} className='recent-button'>{input}</button>
             })}
         </div>
             

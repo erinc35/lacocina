@@ -20,8 +20,7 @@ class QuickLinks extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { 
-            recipes: [],
-            recipesLiked: []
+            recipes: []
          }
     }
 
@@ -45,7 +44,6 @@ class QuickLinks extends PureComponent {
 
     render() { 
         this.props.recepieFadeIn();
-        console.log('quicklinks render')
         return ( 
             <div>
                 <div className='quicklinks'>

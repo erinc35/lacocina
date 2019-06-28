@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import host from '../host';
 import Recipe from '../Recipe/Recipe';
 import bread from '../images/bread.jpeg';
@@ -16,31 +16,13 @@ import $ from 'jquery';
 let app_id = process.env.REACT_APP_YOUR_APP_ID;
 let app_key = process.env.REACT_APP_YOUR_APP_KEY;
 
-class QuickLinks extends Component {
+class QuickLinks extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { 
             recipes: [],
             recipesLiked: []
          }
-    }
-
-    componentDidMount() {
-        this.getLikedRecipes();
-    }
-
-
-    getLikedRecipes = async () => {
-        try {
-            let userId = localStorage.getItem('userId')
-            const res = await axios.get(`${host}/api/users/${userId}/recipes`)
-            if (res) {
-                // console.log(res.data)
-                this.setState({ recipesLiked: res.data })
-            }
-        } catch (err) {
-            console.log(err)
-        };
     }
 
     fetchQuickLink = e => {
@@ -94,7 +76,7 @@ class QuickLinks extends Component {
                 </div>
                 <div className='recipes' id='quicklinks'>
                     {this.state.recipes ? this.state.recipes.map(recipe => {
-                        return <Recipe recipeData={recipe.recipe} recipesLiked={this.state.recipesLiked} key={Math.floor(recipe.recipe.calories)}/>;
+                        return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)}/>;
                     }) : <div></div>
                     }
                 </div>

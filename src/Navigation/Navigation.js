@@ -17,7 +17,8 @@ class Navigation extends Component {
         super(props);
 
         this.state = {
-            isOpen: false
+            isOpen: false,
+            recipes: []
         };
     }
 
@@ -28,7 +29,7 @@ class Navigation extends Component {
     }
 
     fetchRecipe = id => {
-        
+
     }
 
     render() {

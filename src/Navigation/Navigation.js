@@ -27,6 +27,10 @@ class Navigation extends Component {
         });
     }
 
+    fetchRecipe = id => {
+        
+    }
+
     render() {
         return (
             <Navbar expand="md" className='navbar'>

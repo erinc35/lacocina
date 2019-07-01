@@ -96,21 +96,21 @@ class Recipe extends Component {
     }
 
     render() { 
-        console.log(this.props.location)
-        let data = this.props.recipeData || this.props.location.state.recipeData;
+        console.log(this.props.recipeData)
+        let data = this.props.recipeData;
         let labelsArray = [] || data.healthLabels;
         let labels = labelsArray.reduce((str, label) => {
             return str + label + ", "
         }, '').slice(0, -2)
         return (  
-            <div className="" >
                 <div className="">
                         <div className='recipe-card recipe-front'>
                             <img src={data.image} alt={data.label} className='recipe-img' />
                             <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
-                                <strong><p className='recipe-name'>{data.label}</p></strong>
+                                <strong><p className='recipe-name'>{data.name || data.label}</p></strong>
                                 <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
-                                <p className='back-item'><strong>Health labels:</strong> {labels}</p>     
+                                {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  
+                                : null}   
                             </a>
                             <i 
                                 onClick={(e) => this.handleLikeRecipe(e)} 
@@ -130,7 +130,6 @@ class Recipe extends Component {
                     </div> */}
 
                 </div>
-            </div>
         );
     }
 }

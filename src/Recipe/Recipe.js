@@ -58,7 +58,7 @@ class Recipe extends Component {
         try {
             let recipesLiked = this.state.recipesLiked; //array of objects
             let recipe = recipesLiked.filter(recipe => {
-                return recipe.RecipeName === this.props.recipeData.label;
+                return recipe.RecipeName === this.props.recipeData.label || this.props.location.state.recipeData.name;
             })
             let recipeId = recipe[0].recipeId
             const res = await axios.delete(`${host}/api/recipes/${recipeId}/recipeOwners/${userId}`)
@@ -96,9 +96,9 @@ class Recipe extends Component {
     }
 
     render() { 
-        // console.log('')
-        let data = this.props.recipeData;
-        let labelsArray = data.healthLabels;
+        console.log(this.props.location)
+        let data = this.props.recipeData || this.props.location.state.recipeData;
+        let labelsArray = [] || data.healthLabels;
         let labels = labelsArray.reduce((str, label) => {
             return str + label + ", "
         }, '').slice(0, -2)

@@ -5,6 +5,8 @@ import App from './App';
 import Auth from './Auth/Auth';
 import Authenticating from './Auth/Authenticating';
 import Search from './Search/Search';
+import Recipe from './Recipe/Recipe';
+
 
 
 // Create new Auth session
@@ -22,6 +24,7 @@ export const makeMainRoutes = () => {
             <>
                 <Route path="/" render={(props) => <App auth={auth} {...props} />} />
                 <Route exact path="/" render={(props) => <Search auth={auth} {...props} />} />
+                <Route exact path="/favorites" render={(props) => <Recipe {...props} />} />                
                 <Route exact path="/authenticating" render={(props) => {
                     handleAuthentication(props);
                     return <Authenticating {...props} />

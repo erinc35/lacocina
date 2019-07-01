@@ -9,6 +9,7 @@ import {
     NavItem,
     NavLink} from 'reactstrap';
 import './Navigation.css';
+import Recipe from '../Recipe/Recipe';
 import host from '../host';
 import axios from 'axios';
 
@@ -98,7 +99,14 @@ class Navigation extends Component {
                             <NavItem>
                                 {this.props.isAuthenticated()
                                     ?
-                                <NavLink to={`/`}>{localStorage.getItem('displayName')}'s Favorites </NavLink> :
+                                    <Link to={{
+                                        pathname: '/favorites',
+                                        state: {
+                                            recipeData: this.state.recipes || []
+                                        }
+                                    }}>
+                                        {localStorage.getItem('displayName')}'s Favorites 
+                                    </Link> :
                                 null  }                          
                             </NavItem>
                             <NavItem>
@@ -112,7 +120,10 @@ class Navigation extends Component {
                     </Collapse>
                 </Navbar>
                 <div className='recipes'>
-
+                    {/* {this.state.recipes ? this.state.recipes.map(recipe => {
+                        return <Recipe recipeData={recipe} key={Math.floor(recipe.calories)} />;
+                    }) : <div></div>
+                    } */}
                 </div>
             </div>
         );

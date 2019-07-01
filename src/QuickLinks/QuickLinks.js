@@ -44,6 +44,7 @@ class QuickLinks extends PureComponent {
 
     render() { 
         this.props.recepieFadeIn();
+
         return ( 
             <div>
                 <div className='quicklinks'>
@@ -74,7 +75,7 @@ class QuickLinks extends PureComponent {
                 </div>
                 <div className='recipes' id='quicklinks'>
                     {this.state.recipes ? this.state.recipes.map(recipe => {
-                        return <Recipe recipeData={recipe.recipe} key={recipe.recipeId}/>;
+                        return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)}/>;
                     }) : <div></div>
                     }
                 </div>

@@ -96,9 +96,9 @@ class Recipe extends Component {
     }
 
     render() { 
-        console.log(this.props.recipeData)
+        // console.log(this.props.recipeData)
         let data = this.props.recipeData;
-        let labelsArray = [] || data.healthLabels;
+        let labelsArray = data.healthLabels || [];
         let labels = labelsArray.reduce((str, label) => {
             return str + label + ", "
         }, '').slice(0, -2)
@@ -111,6 +111,7 @@ class Recipe extends Component {
                                 <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
                                 {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  
                                 : null}   
+                        {/* <p className='back-item'><strong>Health labels:</strong> {labels}</p> */}
                             </a>
                             <i 
                                 onClick={(e) => this.handleLikeRecipe(e)} 

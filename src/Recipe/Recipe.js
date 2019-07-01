@@ -80,7 +80,8 @@ class Recipe extends Component {
         } catch (err) {
             console.log(err)
         };
-        let recipeName = this.props.recipeData.label;
+        console.log(this.props.recipeData.name)
+        let recipeName = this.props.recipeData.label || this.props.recipeData.name;
         if (this.state.recipesLiked && this.state.recipesLiked.some(recipe => {
             return recipe.RecipeName === recipeName
         })) {

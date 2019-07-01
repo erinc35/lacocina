@@ -4,9 +4,9 @@
     width: 280px;;
     /* max-width: 20%; */
     border: 1px solid beige;
-    min-height: 490px;
+    min-height: 430px;
     border-radius: 4%;
-    height: 490px;
+    /* height: 490px; */
     color: black;
     background-color: #F0F8FF;
 }

@@ -5,3 +5,13 @@
 .nav-item:hover {
     cursor: pointer;
 }
+
+.nav-item{
+    width: 100%;
+}
+
+.nav-items{ 
+    width: 60%;
+    /* display: flex; */
+    /* justify-content: last baseline */
+ }

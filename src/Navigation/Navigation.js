@@ -95,7 +95,7 @@ class Navigation extends Component {
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar> 
+                        <Nav className="ml-auto nav-items" navbar> 
                             <NavItem>
                                 {this.props.isAuthenticated()
                                     ?
@@ -112,8 +112,8 @@ class Navigation extends Component {
                             <NavItem>
                                 {this.props.isAuthenticated()
                                     ?
-                                    <NavLink to={`/`} onClick={this.props.logout}>Logout</NavLink> : 
-                                    <NavLink to={`/authenticating`} onClick={this.props.login}>Login</NavLink>
+                                    <Link to={`/`} onClick={this.props.logout}>Logout</Link> : 
+                                    <Link to={`/authenticating`} onClick={this.props.login}>Login</Link>
                                 }
                             </NavItem>
                         </Nav>

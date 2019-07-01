@@ -97,15 +97,25 @@ class Recipe extends Component {
     }
 
     render() { 
-        // console.log(this.props.recipeData)
         let data = this.props.recipeData;
+        console.log(data.ingredientLines)
         let labelsArray = data.healthLabels || [];
         let labels = labelsArray.reduce((str, label) => {
             return str + label + ", "
         }, '').slice(0, -2)
+        // {data.ingredientLines ? }
+        let style1 = {
+            height: "430px",
+            minHeight: "430px"
+        }
+        let style2 = {
+            height: "490px",
+            minHeight: "490px"
+        }
+
         return (  
                 <div className="">
-                        <div className='recipe-card recipe-front'>
+                <div className='recipe-card recipe-front' style={data.ingredientLines ? style2 : style1}>
                             <img src={data.image} alt={data.label} className='recipe-img' />
                             <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
                                 <strong><p className='recipe-name'>{data.name || data.label}</p></strong>

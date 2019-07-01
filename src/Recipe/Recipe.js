@@ -96,6 +96,7 @@ class Recipe extends Component {
     }
 
     render() { 
+        // console.log('')
         let data = this.props.recipeData;
         let labelsArray = data.healthLabels;
         let labels = labelsArray.reduce((str, label) => {

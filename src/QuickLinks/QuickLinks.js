@@ -74,7 +74,7 @@ class QuickLinks extends PureComponent {
                 </div>
                 <div className='recipes' id='quicklinks'>
                     {this.state.recipes ? this.state.recipes.map(recipe => {
-                        return <Recipe recipeData={recipe.recipe} key={Math.floor(recipe.recipe.calories)}/>;
+                        return <Recipe recipeData={recipe.recipe} key={recipe.recipeId}/>;
                     }) : <div></div>
                     }
                 </div>

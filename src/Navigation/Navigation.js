@@ -86,7 +86,6 @@ class Navigation extends Component {
     }
 
     render() {
-        console.log(this.state.recipes)
         return (
             <div>
                 <Navbar expand="md" className='navbar'>

@@ -88,7 +88,7 @@ class Navigation extends Component {
     render() {
         return (
             <div>
-                <Navbar expand="md" className='navbar'>
+                <Navbar light expand="md" className='navbar'>
                     <NavbarBrand href="/">
                         <h1 className="app-title">la cocina</h1>                          
                     </NavbarBrand>

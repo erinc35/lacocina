@@ -54,11 +54,12 @@ class Recipe extends Component {
 
     deleteRecipe = async (userId) => {
         this.getLikedRecipes();
-
+        console.log(this.props.location)
         try {
             let recipesLiked = this.state.recipesLiked; //array of objects
             let recipe = recipesLiked.filter(recipe => {
-                return recipe.RecipeName === this.props.recipeData.label || this.props.location.state.recipeData.name;
+                return recipe.RecipeName === this.props.recipeData.label 
+                // || this.props.location.state.recipeData.name;
             })
             let recipeId = recipe[0].recipeId
             const res = await axios.delete(`${host}/api/recipes/${recipeId}/recipeOwners/${userId}`)
@@ -115,19 +116,19 @@ class Recipe extends Component {
         return (  
                 <div className="">
                 <div className='recipe-card recipe-front' style={data.ingredientLines ? style2 : style1}>
-                            <img src={data.image} alt={data.label} className='recipe-img' />
-                            <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
-                                <strong><p className='recipe-name'>{data.name || data.label}</p></strong>
-                                <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
-                                {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  
-                                : null}   
-                        {/* <p className='back-item'><strong>Health labels:</strong> {labels}</p> */}
-                            </a>
-                            <i 
-                                onClick={(e) => this.handleLikeRecipe(e)} 
-                                className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
-                            </i>                           
-                        </div>
+                    <img src={data.image} alt={data.label} className='recipe-img' />
+                    <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
+                        <strong><p className='recipe-name'>{data.name || data.label}</p></strong>
+                        <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
+                        {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  
+                        : null}   
+                    {/* <p className='back-item'><strong>Health labels:</strong> {labels}</p> */}
+                        </a>
+                        <i 
+                            onClick={(e) => this.handleLikeRecipe(e)} 
+                            className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
+                        </i>                           
+                    </div>
 
                     {/* <div className="">
                         <div className='recipe-card recipe-back'>

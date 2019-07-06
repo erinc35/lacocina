@@ -28,8 +28,10 @@ class Navigation extends Component {
     }
 
     componentDidMount() {
-        const userId = localStorage.getItem('userId');         
-        this.fetchAllRecipes(userId);
+        const userId = localStorage.getItem('userId');  
+        if(localStorage.getItem('displayName')){
+            this.fetchAllRecipes(userId) 
+        }
     }
 
     toggle = () => {

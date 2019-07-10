@@ -41,15 +41,23 @@
 }
 
 
-@media (max-width: 780px) {
+@media (max-width: 680px) {
 
     .quicklink span {
-        font-size: 0.8em;
+        font-size: 0.7em;
     }
     .icon {
         width: 80px;
     }
 }
+
+/* @media (max-width: 700px) {
+
+    .quicklink span {
+        font-size: 0.3em;
+    }
+
+} */
 
 
 @media (max-width: 640px) {
@@ -60,8 +68,9 @@
         justify-content: flex-start;
     }
 
-    .quicklink{
+    .quicklink span{
         display: flex;
         text-align: center;
+        /* font-size: 0.6em; */
     }
 }

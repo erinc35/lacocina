@@ -1,5 +1,4 @@
 import React, { Component, PureComponent } from "react";
-import host from '../host';
 import Recipe from '../Recipe/Recipe';
 import bread from '../images/bread.jpeg';
 import cookie from '../images/cookie.jpeg';

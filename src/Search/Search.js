@@ -214,7 +214,7 @@ class Search extends Component {
                     </div>
                 </div>
                 <QuickLinks recepieFadeIn={this.recepieFadeIn}/>
-                {this.state.recipes.length === 0 ? <div className="soup-pot-loader">
+                {this.state.recipes.length === 0 && this.state.not_found === false ? <div className="soup-pot-loader">
                     <div className="can"></div>
                     <div className="can"></div>
                     <div className="can"></div>

@@ -84,7 +84,6 @@ class Search extends Component {
 
         axios.get(api)
             .then(response => {
-                console.log(response)
                 response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false}) : 
                     this.setState({ not_found: true });
             })

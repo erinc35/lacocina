@@ -16,7 +16,7 @@ class Recipe extends Component {
     }
 
     componentDidMount() {
-        this.getLikedRecipes();
+        if (localStorage.getItem('userId')) this.getLikedRecipes();
     }
 
     handleLikeRecipe = async (event) => {

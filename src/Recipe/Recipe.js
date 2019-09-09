@@ -30,7 +30,12 @@ class Recipe extends Component {
             'url': url
         }
         // this.addRecipe(currentRecipe, userId)
-        this.state.liked ? this.deleteRecipe(userId.userId) : this.addRecipe(currentRecipe, userId) 
+    
+        if(localStorage.getItem('userId') === null) {
+            this.props.login()
+        }else{
+            this.state.liked ? this.deleteRecipe(userId.userId) : this.addRecipe(currentRecipe, userId) 
+        }
         // this.toggleLike();
     };
 
@@ -98,6 +103,8 @@ class Recipe extends Component {
     }
 
     render() { 
+        console.log(this.props)
+        
         let data = this.props.recipeData;
         let labelsArray = data.healthLabels || [];
         let labels = labelsArray.reduce((str, label) => {

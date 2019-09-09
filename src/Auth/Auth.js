@@ -20,7 +20,7 @@ export default class Auth {
     });
 
     login = () => {
-        console.log('login')
+        // console.log('login')
         this.auth0.authorize();        
     }
 

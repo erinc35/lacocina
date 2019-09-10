@@ -158,8 +158,7 @@ class Search extends Component {
         });
     }
 
-    render() { 
-        console.log(this.props.auth.login)        
+    render() {       
         // console.log(this.props.isAuthenticated)
         this.recepieFadeIn();
         // if(this.state.recipes.length === 0) {

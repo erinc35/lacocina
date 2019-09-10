@@ -59,7 +59,6 @@ class Recipe extends Component {
 
     deleteRecipe = async (userId) => {
         this.getLikedRecipes();
-        console.log(this.props.location)
         try {
             let recipesLiked = this.state.recipesLiked; //array of objects
             let recipe = recipesLiked.filter(recipe => {
@@ -103,8 +102,6 @@ class Recipe extends Component {
     }
 
     render() { 
-        console.log(this.props)
-        
         let data = this.props.recipeData;
         let labelsArray = data.healthLabels || [];
         let labels = labelsArray.reduce((str, label) => {

@@ -110,7 +110,7 @@ class Navigation extends Component {
                                 null  }                          
                             </NavItem>
                             <NavItem>
-                                {/* {this.props.isAuthenticated() */}
+                                {this.props.isAuthenticated()
                                     ?
                                     <Link to={`/`} onClick={this.props.logout}>Logout</Link> : 
                                     <Link to={`/authenticating`} onClick={this.props.login}>Login</Link>

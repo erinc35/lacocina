@@ -211,7 +211,7 @@ class Search extends Component {
                             </form>
                     </div>
                 </div>
-                <QuickLinks recepieFadeIn={this.recepieFadeIn}/>
+                <QuickLinks recepieFadeIn={this.recepieFadeIn} login={this.props.auth.login} />
                 {this.state.recipes.length === 0 && this.state.not_found === false ? <div className="soup-pot-loader">
                     <div className="can"></div>
                     <div className="can"></div>

@@ -9,7 +9,7 @@
 }
 
 .search-wrap{
-    font-family: "DeLaFuente";
+    /* font-family: "DeLaFuente"; */
     min-height: 100%;
     position: relative;
     padding: 2%;
@@ -48,7 +48,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0 2%;
-    font-family: "Brush Script MT";
+    /* font-family: "Brush Script MT"; */
     font-size: 1.9rem;
 }
 

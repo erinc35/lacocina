@@ -126,8 +126,7 @@ class Recipe extends Component {
                         <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
                         {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  
                         : null}   
-                    {/* <p className='back-item'><strong>Health labels:</strong> {labels}</p> */}
-                        </a>
+                    </a>
                         <i 
                             onClick={(e) => this.handleLikeRecipe(e)} 
                             className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>

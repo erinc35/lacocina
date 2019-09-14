@@ -90,8 +90,9 @@ class Navigation extends Component {
         return (
             <div>
                 <Navbar light expand="md" className='navbar'>
-                    <NavbarBrand href="/">
+                    <NavbarBrand href="/" className='icon-wrap' >
                         <h1 className="app-title">la cocina</h1>                          
+                        <i class="fas fa-utensils fa-2x icon"></i>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>

@@ -7,11 +7,20 @@
 }
 
 .nav-item{
-    width: 100%;
+    width: 160px;
+    margin-left: 25px;
 }
-/* 
-.nav-items{ 
-    /* width: 60%; */
-    /* display: flex; */
-    /* justify-content: last baseline */
- /* } */ 
+
+.icon-wrap{
+    display: flex;
+}
+
+.icon{
+    margin-top: 1%;
+}
+
+/* .nav-items{ 
+    width: 60%;
+    display: flex;
+    justify-content: last baseline
+  }  */

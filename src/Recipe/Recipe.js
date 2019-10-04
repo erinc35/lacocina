@@ -124,13 +124,12 @@ class Recipe extends Component {
                     <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
                         <strong><p className='recipe-name'>{data.name || data.label}</p></strong>
                         <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
-                        {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  
-                        : null}   
+                        {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  : null}   
                     </a>
-                        <i 
-                            onClick={(e) => this.handleLikeRecipe(e)} 
-                            className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
-                        </i>                           
+                    <i 
+                        onClick={(e) => this.handleLikeRecipe(e)} 
+                        className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
+                    </i>                           
                     </div>
 
                     {/* <div className="">

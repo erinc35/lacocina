@@ -7,9 +7,8 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink} from 'reactstrap';
+} from 'reactstrap';
 import './Navigation.css';
-import Recipe from '../Recipe/Recipe';
 import host from '../host';
 import axios from 'axios';
 
@@ -60,25 +59,11 @@ class Navigation extends Component {
                 let recipes = recipeIds.reduce( async(recipes, id) => {
                     await this.fetchRecipe(id)
                     this.setState({ recipes: [...this.state.recipes, this.state.recipe]})
-                        // if (result) {
-                        //     recipes = [...recipes, this.state.recipe]
-                        //     return recipes;
-                        // }
-
-                   
-                                    
+            
                     }, [])
-                // console.log('recipes', recipes)
             
             }
-            
-                // await this.fetchRecipe(recipeIds[0])
-                // console.log(this.state.recipe)
-                // this.setState({ recipes: res.data })    
-                //  axios.get(`${host}/api/recipes`)
-                //       .then(res => {
-                //           console.log(res.da
-                //       })           
+                    
             
         } catch(err){
             console.log(err)

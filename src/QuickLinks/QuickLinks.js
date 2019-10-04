@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import Recipe from '../Recipe/Recipe';
 import bread from '../images/bread.jpeg';
 import cookie from '../images/cookie.jpeg';
@@ -8,7 +8,6 @@ import salad from '../images/salad.jpeg';
 import chicken from '../images/chicken.jpeg';
 import './QuickLinks.css';
 import axios from 'axios';
-import $ from 'jquery';
 
 
 

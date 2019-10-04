@@ -128,7 +128,6 @@ class Search extends Component {
         $("input:checkbox").on('click', (e) => {
             // in the handler, 'this' refers to the box clicked on
             let $box = e.target;
-            let diets = { ...this.state.diets };
             let diet = e.target.name;
             
             if ($box.checked) {
@@ -221,7 +220,7 @@ class Search extends Component {
                 <div className='recipes' id='search'>
                     {this.state.not_found === false ? this.state.recipes.map((recipe, index) => {
                         // console.log(recipe)
-                        return <a target="_blank" href={recipe.recipe.url} className='recipe-link' key={index}><Recipe recipeData={recipe.recipe} login={this.props.auth.login}/></a>
+                        return <a target="_blank" href={recipe.recipe.url} rel="noopener noreferrer" className='recipe-link' key={index}><Recipe recipeData={recipe.recipe} login={this.props.auth.login}/></a>
                         // return <Recipe recipeData={recipe.recipe}  />
                     }) : <div className='not-found'>
                             <p className='not-found-text'>Sorry, there is nothing cook with {this.state.invalidSearch}.</p>

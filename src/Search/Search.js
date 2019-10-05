@@ -58,11 +58,8 @@ class Search extends Component {
         e.preventDefault();
         $('.recipes div').empty();
         const ingInput = this.state.ingredients;
-        // const parsedRecentSearch = JSON.parse(localStorage.getItem('recentSearch')) ||
         const searched = JSON.parse(localStorage.getItem('recentSearch')) === null ? [] : JSON.parse(localStorage.getItem('recentSearch')).slice();
-        // const searched = this.state.searched.slice();        
         if (this.state.ingredients !== '') searched.push(this.state.ingredients)
-        // localStorage.setItem('recentSearch', JSON.stringify(searched).slice(searched.length - 8))
         localStorage.setItem('recentSearch', JSON.stringify(searched.slice(searched.length - 5)))
 
         this.setState({ //searched: searched.slice(searched.length - 8), 
@@ -222,7 +219,9 @@ class Search extends Component {
                         // console.log(recipe)
                         return <a target="_blank" href={recipe.recipe.url} rel="noopener noreferrer" className='recipe-link' key={index}><Recipe recipeData={recipe.recipe} login={this.props.auth.login}/></a>
                         // return <Recipe recipeData={recipe.recipe}  />
-                    }) : <div className='not-found'>
+                    }) 
+                    : 
+                    <div className='not-found'>
                             <p className='not-found-text'>Sorry, there is nothing cook with {this.state.invalidSearch}.</p>
                     </div>
                     }

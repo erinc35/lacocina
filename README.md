@@ -2,6 +2,8 @@
 
 Find and share everyday cooking inspiration on La Cocina. Discover recipes, cooks, videos, and how-tos based on the food you love and the friends you follow.
 
+https://la-cocina.netlify.com/
+
 ### search form
 ![search form](https://github.com/erinc35/lacocina/blob/master/search.png)
 

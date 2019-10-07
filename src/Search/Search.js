@@ -216,13 +216,15 @@ class Search extends Component {
                 </div> : null}
                 <div className='recipes' id='search'>
                     {this.state.not_found === false ? this.state.recipes.map((recipe, index) => {
-                        // console.log(recipe)
-                        return <a target="_blank" href={recipe.recipe.url} rel="noopener noreferrer" className='recipe-link' key={index}><Recipe recipeData={recipe.recipe} login={this.props.auth.login}/></a>
-                        // return <Recipe recipeData={recipe.recipe}  />
+                        return (
+                                <div className='recipe-link' key={index}>
+                                  <Recipe recipeData={recipe.recipe} login={this.props.auth.login}/>
+                                </div>
+                                )
                     }) 
                     : 
                     <div className='not-found'>
-                            <p className='not-found-text'>Sorry, there is nothing cook with {this.state.invalidSearch}.</p>
+                        <p className='not-found-text'>Sorry, there is nothing cook with {this.state.invalidSearch}.</p>
                     </div>
                     }
                 </div>

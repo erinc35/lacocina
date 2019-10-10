@@ -96,7 +96,7 @@ class Navigation extends Component {
                                     <Link to={{
                                         pathname: '/favorites',
                                         state: {
-                                            recipeData: this.state.recipes || []
+                                            recipeData: this.state.recipes 
                                         }
                                     }}>
                                         {localStorage.getItem('displayName')}'s Favorites 

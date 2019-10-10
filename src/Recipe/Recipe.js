@@ -120,7 +120,7 @@ class Recipe extends Component {
         return (  
                 <div className="">
                 <div className='recipe-card recipe-front' style={data.ingredientLines ? style2 : style1}>
-                    <img src={data.image} alt={data.label} className='recipe-img' />
+                    <img src={data.image || data.recipeImage} alt={data.label} className='recipe-img' />
                     <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
                         <strong><p className='recipe-name'>{data.name || data.label ||data.RecipeName}</p></strong>
                         <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>

@@ -5,7 +5,6 @@ import App from './App';
 import Auth from './Auth/Auth';
 import Authenticating from './Auth/Authenticating';
 import Search from './Search/Search';
-// import Recipe from './Recipe/Recipe';
 import Favorites from './Favorites/Favorites';
 
 

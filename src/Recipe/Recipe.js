@@ -122,7 +122,7 @@ class Recipe extends Component {
                 <div className='recipe-card recipe-front' style={data.ingredientLines ? style2 : style1}>
                     <img src={data.image} alt={data.label} className='recipe-img' />
                     <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
-                        <strong><p className='recipe-name'>{data.name || data.label}</p></strong>
+                        <strong><p className='recipe-name'>{data.name || data.label ||data.RecipeName}</p></strong>
                         <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
                         {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  : null}   
                     </a>

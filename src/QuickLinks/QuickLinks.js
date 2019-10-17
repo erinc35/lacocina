@@ -22,23 +22,23 @@ class QuickLinks extends PureComponent {
          }
     }
 
-    fetchQuickLink = e => {
-        e.preventDefault();
-        // let recipes = $('#search')[0];
-        this.setState({
-            recipes: []
-        })
-        let ing = e.target.alt;
-        let quick_api = `https://api.edamam.com/search?q=${ing}&app_id=${app_id}&app_key=${app_key}&count=20`
-        axios
-            .get(quick_api)
-            .then(response => {
-                this.setState({ recipes: response.data.hits });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
+    // fetchQuickLink = e => {
+    //     e.preventDefault();
+    //     // let recipes = $('#search')[0];
+    //     this.setState({
+    //         recipes: []
+    //     })
+    //     let ing = e.target.alt;
+    //     let quick_api = `https://api.edamam.com/search?q=${ing}&app_id=${app_id}&app_key=${app_key}&count=20`
+    //     axios
+    //         .get(quick_api)
+    //         .then(response => {
+    //             this.setState({ recipes: response.data.hits });
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // }
 
     render() { 
         this.props.recepieFadeIn();
@@ -46,27 +46,27 @@ class QuickLinks extends PureComponent {
         return ( 
             <div>
                 <div className='quicklinks'>
-                    <div href="#" className="quicklink" onClick={this.fetchQuickLink}>
+                    <div href="#" className="quicklink" onClick={this.props.fetchQuickLink}>
                         <img alt='bread' className="icon" src={bread} />
                         <span>Bread Recipes</span>
                     </div>
-                    <div href="#" className="quicklink" onClick={this.fetchQuickLink}>
+                    <div href="#" className="quicklink" onClick={this.props.fetchQuickLink}>
                         <img alt='cookie' className="icon" src={cookie} />
                         <span>Cookie Recipes</span>
                     </div>
-                    <div href="#" className="quicklink" onClick={this.fetchQuickLink}>
+                    <div href="#" className="quicklink" onClick={this.props.fetchQuickLink}>
                         <img alt='shrimp' className="icon" src={shrimp} />
                         <span>Shrimp Recipes</span>
                     </div>
-                    <div href="#" className="quicklink" onClick={this.fetchQuickLink}>
+                    <div href="#" className="quicklink" onClick={this.props.fetchQuickLink}>
                         <img alt='lamb' className="icon" src={lamb} />
                         <span>Lamb Recipes</span>                    
                     </div>
-                    <div href="#" className="quicklink" onClick={this.fetchQuickLink}>
+                    <div href="#" className="quicklink" onClick={this.props.fetchQuickLink}>
                         <img alt='salad' className="icon" src={salad} />
                         <span>Salad Recipes</span>
                     </div>
-                    <div href="#" className="quicklink" onClick={this.fetchQuickLink}>
+                    <div href="#" className="quicklink" onClick={this.props.fetchQuickLink}>
                         <img alt='chicken' className="icon" src={chicken} />
                         <span>Chicken Recipes</span>
                     </div>    

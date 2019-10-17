@@ -29,6 +29,7 @@ class Search extends Component {
                 low_fat: false
             }
          }
+         this.recentSearchElement = React.createRef();
     }
 
     componentDidMount() {
@@ -52,6 +53,24 @@ class Search extends Component {
                 });
         })
 
+    }
+
+    fetchQuickLink = e => {
+        e.preventDefault();
+        // let recipes = $('#search')[0];
+        this.setState({
+            recipes: []
+        })
+        let ing = e.target.alt;
+        let quick_api = `https://api.edamam.com/search?q=${ing}&app_id=${app_id}&app_key=${app_key}&count=20`
+        axios
+            .get(quick_api)
+            .then(response => {
+                this.setState({ recipes: response.data.hits });
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     searchRecipe = e => {
@@ -97,6 +116,8 @@ class Search extends Component {
 
     handleRecentSearch = (e, input) => {
         e.preventDefault();
+        console.log($('.recipes div'));
+        
         $('.recipes div').empty();
         const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
         searched.push(input);
@@ -156,7 +177,7 @@ class Search extends Component {
 
     render() {       
         // console.log(this.props.isAuthenticated)
-        this.recepieFadeIn();
+        // this.recepieFadeIn();
         // if(this.state.recipes.length === 0) {
         //     return <div>buu</div>
         // }
@@ -207,7 +228,7 @@ class Search extends Component {
                             </form>
                     </div>
                 </div>
-                <QuickLinks recepieFadeIn={this.recepieFadeIn} login={this.props.auth.login} />
+                <QuickLinks fetchQuickLink={this.fetchQuickLink} recepieFadeIn={this.recepieFadeIn} login={this.props.auth.login} />
                 {this.state.recipes.length === 0 && this.state.not_found === false ? <div className="soup-pot-loader">
                     <div className="can"></div>
                     <div className="can"></div>

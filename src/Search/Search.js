@@ -116,7 +116,7 @@ class Search extends Component {
 
     handleRecentSearch = (e, input) => {
         e.preventDefault();
-        console.log($('.recipes div'));
+
         
         $('.recipes div').empty();
         const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();

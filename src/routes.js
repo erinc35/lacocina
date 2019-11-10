@@ -24,7 +24,7 @@ export const makeMainRoutes = () => {
             <>
                 <Route path="/" render={(props) => <App auth={auth} {...props} />} />
                 <Route exact path="/" render={(props) => <Search auth={auth} {...props} />} />               
-                <Route exact path="/favorites" render={(props) => <Favorites {...props} />} />                
+                <Route exact path="/favorites" component={Favorites} />                
                 <Route exact path="/authenticating" render={(props) => {
                     handleAuthentication(props);
                     return <Authenticating {...props} />

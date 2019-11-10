@@ -9,8 +9,9 @@ import {
     NavItem,
 } from 'reactstrap';
 import './Navigation.css';
-import host from '../host';
 import axios from 'axios';
+import host from '../host';
+
 
 
 
@@ -27,10 +28,11 @@ class Navigation extends Component {
     }
 
     componentDidMount() {
+        console.log('cdm')
         const userId = localStorage.getItem('userId');  
-        if(localStorage.getItem('displayName')){
-            this.fetchAllRecipes(userId) 
-        }
+        // if(localStorage.getItem('displayName')){
+        //     this.fetchAllRecipes(userId) 
+        // }
     }
 
     toggle = () => {
@@ -52,6 +54,7 @@ class Navigation extends Component {
     }
 
     fetchAllRecipes = async id => {
+
         try{
             const res = await axios.get(`${host}/api/users/${id}/recipes`)
             // console.log(res)
@@ -78,6 +81,8 @@ class Navigation extends Component {
     }
 
     render() {
+        console.log(this.state.recipes)
+        const userId = localStorage.getItem('userId');  
         
         return (
             <div>
@@ -97,7 +102,9 @@ class Navigation extends Component {
                                         state: {
                                             recipeData: this.state.recipes 
                                         }
-                                    }}>
+                                    }} 
+                                    onClick={() => this.fetchAllRecipes(userId)}
+                                    >
                                         {localStorage.getItem('displayName')}'s Favorites 
                                     </Link> :
                                 null  }                          

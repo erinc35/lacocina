@@ -54,26 +54,11 @@ class Navigation extends Component {
     }
 
     fetchAllRecipes = async id => {
-
         try{
             const res = await axios.get(`${host}/api/users/${id}/recipes`)
-            // console.log(res)
             if(res) {
                 this.setState({ recipes: res.data })
-                // let recipeIds = res.data.map(recipe => recipe.recipeId)
-                // let recipes = recipeIds.reduce( async(recipes, id) => {
-                //     await this.fetchRecipe(id)
-                //     this.setState({ recipes: [...this.state.recipes, this.state.recipe]})
-                //     }, [])
-                // console.log(recipes);
-                // recipes.then(res => {
-                //     console.log(res);
-                    
-                // })
-                
-            }
-                    
-            
+            }     
         } catch(err){
             console.log(err)
         }

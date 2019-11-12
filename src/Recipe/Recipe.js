@@ -16,6 +16,9 @@ class Recipe extends Component {
     }
 
     componentDidMount() {
+        // console.log('props',this.props.fillHeart);
+        
+        if (this.props.fillHeart) this.fillHeart()
         if (localStorage.getItem('userId')) this.getLikedRecipes();
     }
 
@@ -94,6 +97,13 @@ class Recipe extends Component {
         }
     }
 
+    fillHeart = () => {
+        this.setState({
+            ...this.state,
+            liked: true
+        })
+    }
+
 
     toggleLike = () => {
         this.setState(prevState => ({
@@ -116,7 +126,7 @@ class Recipe extends Component {
             height: "490px",
             minHeight: "490px"
         }
-        // console.log(this.state.recipesLiked)
+        console.log(this.state)
         return (  
                 <div className="">
                 <div className='recipe-card recipe-front' style={data.ingredientLines ? style2 : style1}>

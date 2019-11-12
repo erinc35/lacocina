@@ -28,12 +28,14 @@ class Favorites extends Component {
 
     }
 
+    
+
     render() { 
         const { favRecipes } = this.state;
-        console.log(this.state)
+        // console.log(this.state)
         return (<div className='recipes'>
             {favRecipes ? favRecipes.map(recipe => {
-                return <Recipe key={recipe.recipeId} recipeData={recipe} />;
+                return <Recipe key={recipe.recipeId} recipeData={recipe} fillHeart={true}/>;
             }) : <div></div>
             }
         </div> );

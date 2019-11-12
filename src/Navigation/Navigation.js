@@ -28,7 +28,6 @@ class Navigation extends Component {
     }
 
     componentDidMount() {
-        console.log('cdm')
         const userId = localStorage.getItem('userId');  
         // if(localStorage.getItem('displayName')){
         //     this.fetchAllRecipes(userId) 
@@ -66,7 +65,6 @@ class Navigation extends Component {
     }
 
     render() {
-        console.log(this.state.recipes)
         const userId = localStorage.getItem('userId');  
         
         return (

@@ -64,11 +64,17 @@ class Recipe extends Component {
         this.getLikedRecipes();
         try {
             let recipesLiked = this.state.recipesLiked; //array of objects
+            console.log(recipesLiked)
             let recipe = recipesLiked.filter(recipe => {
                 return recipe.RecipeName === this.props.recipeData.label 
                 // || this.props.location.state.recipeData.name;
             })
-            let recipeId = recipe[0].recipeId
+            let recipeId;
+            if(recipe[0] === undefined){
+                recipeId = recipesLiked[0].recipeId
+            } else{
+                recipeId = recipe[0].recipeId 
+            }
             const res = await axios.delete(`${host}/api/recipes/${recipeId}/recipeOwners/${userId}`)
             if (res) {
                 this.setState({ liked: false })

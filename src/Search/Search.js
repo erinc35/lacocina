@@ -57,7 +57,6 @@ class Search extends Component {
 
     fetchQuickLink = e => {
         e.preventDefault();
-        // let recipes = $('#search')[0];
         this.setState({
             recipes: []
         })
@@ -75,7 +74,6 @@ class Search extends Component {
 
     searchRecipe = e => {
         e.preventDefault();
-        // $('.recipes div').empty();
         const ingInput = this.state.ingredients;
         const searched = JSON.parse(localStorage.getItem('recentSearch')) === null ? [] : JSON.parse(localStorage.getItem('recentSearch')).slice();
         if (this.state.ingredients !== '') searched.push(this.state.ingredients)
@@ -116,12 +114,8 @@ class Search extends Component {
 
     handleRecentSearch = (e, input) => {
         e.preventDefault();
-
-        
-        $('.recipes div').empty();
         const searched = JSON.parse(localStorage.getItem('recentSearch')).slice();
         searched.push(input);
-        // console.log(searched)
         localStorage.setItem('recentSearch', JSON.stringify(searched.slice(searched.length - 5)))
 
         this.setState({ 

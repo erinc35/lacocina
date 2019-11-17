@@ -7,12 +7,8 @@ import lamb from '../images/lamb.jpeg';
 import salad from '../images/salad.jpeg';
 import chicken from '../images/chicken.jpeg';
 import './QuickLinks.css';
-import axios from 'axios';
 
 
-
-let app_id = process.env.REACT_APP_YOUR_APP_ID;
-let app_key = process.env.REACT_APP_YOUR_APP_KEY;
 
 class QuickLinks extends PureComponent {
     constructor(props) {

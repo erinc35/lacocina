@@ -132,7 +132,7 @@ class Recipe extends Component {
             height: "490px",
             minHeight: "490px"
         }
-        console.log(this.state)
+
         return (  
                 <div className="">
                 <div className='recipe-card recipe-front' style={data.ingredientLines ? style2 : style1}>

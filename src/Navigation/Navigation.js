@@ -27,13 +27,6 @@ class Navigation extends Component {
         };
     }
 
-    componentDidMount() {
-        const userId = localStorage.getItem('userId');  
-        // if(localStorage.getItem('displayName')){
-        //     this.fetchAllRecipes(userId) 
-        // }
-    }
-
     toggle = () => {
         this.setState({
             isOpen: !this.state.isOpen
@@ -65,7 +58,7 @@ class Navigation extends Component {
     }
 
     render() {
-        const userId = localStorage.getItem('userId');  
+        // const userId = localStorage.getItem('userId');  
         
         return (
             <div>
@@ -86,7 +79,7 @@ class Navigation extends Component {
                                             recipeData: this.state.recipes 
                                         }
                                     }} 
-                                    onClick={() => this.fetchAllRecipes(userId)}
+                                    // onClick={() => this.fetchAllRecipes(userId)}
                                     >
                                         {localStorage.getItem('displayName')}'s Favorites 
                                     </Link> :

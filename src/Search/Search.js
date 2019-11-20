@@ -27,37 +27,42 @@ class Search extends Component {
                 high_protein: false,
                 balanced: false,
                 low_fat: false
-            }
+            },
+            selected: 0
          }
          //focus area
          this.recentSearchElement = React.createRef();
     }
 
+    // dietCheck = e => {
+    //     $("input:checkbox").on('click', (e) => {
+    //         // in the handler, 'this' refers to the box clicked on
+    //         let $box = e.target;
+    //         let diet = e.target.name;
+
+    //         if ($box.checked) {
+    //             let group = "input:checkbox[alt='" + $box.alt + "']";
+
+    //             $(group)[0].checked = false;
+    //             $(group)[1].checked = false;
+    //             $(group)[2].checked = false;
+    //             $(group)[3].checked = false;
+
+    //             $box.checked = true;
+
+    //             this.setState({ diets: { ...this.state.diets, [diet]: true } })
+    //             // console.log(this.state.diets.low_carb)
+
+    //         } else {
+    //             $box.checked = false;
+    //             this.setState({ diets: { ...this.state.diets, [diet]: false } })
+    //         }
+
+    //     });
+    // }
+
     dietCheck = e => {
-        $("input:checkbox").on('click', (e) => {
-            // in the handler, 'this' refers to the box clicked on
-            let $box = e.target;
-            let diet = e.target.name;
-
-            if ($box.checked) {
-                let group = "input:checkbox[alt='" + $box.alt + "']";
-
-                $(group)[0].checked = false;
-                $(group)[1].checked = false;
-                $(group)[2].checked = false;
-                $(group)[3].checked = false;
-
-                $box.checked = true;
-
-                this.setState({ diets: { ...this.state.diets, [diet]: true } })
-                // console.log(this.state.diets.low_carb)
-
-            } else {
-                $box.checked = false;
-                this.setState({ diets: { ...this.state.diets, [diet]: false } })
-            }
-
-        });
+        this.setState({ selected: e.target.value })
     }
 
     componentDidMount() {
@@ -121,6 +126,7 @@ class Search extends Component {
             let inputs = Array.from(e.target.getElementsByClassName('form-check-input'))   
             let checkedDiet = inputs.filter(input => input.checked)[0].name.replace(/_/g, '-');
             api = api + `&diet=${checkedDiet}`
+            console.log(api)
         }
 
         axios.get(api)
@@ -197,19 +203,19 @@ class Search extends Component {
                                         <legend className="col-form-label col-sm-2 pt-0 form-label">Diet Options</legend>
                                         <div className="col-sm-10 diet-opts">
                                             <div className="form-check">
-                                                <input className="form-check-input" alt="box" type="checkbox" name="low_carb" onChange={this.dietCheck} />
+                                                <input className="form-check-input"  checked={this.state.selected === 'checkbox-1'} alt="box" type="checkbox" value='checkbox-1' name="low_carb" onChange={this.dietCheck} />
                                                 <label className="form-check-label" >Low-carb</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" alt="box" type="checkbox" name="high_protein"  onChange={this.dietCheck}/>
+                                                <input className="form-check-input" checked={this.state.selected === 'checkbox-2'} alt="box" type="checkbox" value='checkbox-2' name="high_protein"  onChange={this.dietCheck}/>
                                                 <label className="form-check-label" >High-protein</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" alt="box" type="checkbox" name="balanced"  onChange={this.dietCheck}/>
+                                                <input className="form-check-input" checked={this.state.selected === 'checkbox-3'} alt="box" type="checkbox" value='checkbox-3' name="balanced"  onChange={this.dietCheck}/>
                                                 <label className="form-check-label" >Balanced</label>
                                             </div>
                                             <div className="form-check">
-                                                <input className="form-check-input" alt="box" type="checkbox" name="low_fat"  onChange={this.dietCheck}/>
+                                                <input className="form-check-input" checked={this.state.selected === 'checkbox-4'} alt="box" type="checkbox" value='checkbox-4' name="low_fat"  onChange={this.dietCheck}/>
                                                 <label className="form-check-label" >Low-fat</label>
                                             </div>
                                         </div>

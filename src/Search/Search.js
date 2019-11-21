@@ -138,17 +138,13 @@ class Search extends Component {
 
         axios.get(api)
             .then(response => {
-                response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false}) : 
+                response.data.hits.length > 0 ? this.setState({ recipes: response.data.hits, not_found: false, selected: ''}) : 
                     this.setState({ not_found: true });
             })
             .catch(err => {
                 console.log(err);
             });
-
-        let boxes = $('.form-check-input');
-        for(let i = 0; i < boxes.length; i++) {
-            boxes[i].checked = false;
-        }
+       
         
     }
 

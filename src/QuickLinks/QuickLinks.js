@@ -18,26 +18,8 @@ class QuickLinks extends PureComponent {
          }
     }
 
-    // fetchQuickLink = e => {
-    //     e.preventDefault();
-    //     // let recipes = $('#search')[0];
-    //     this.setState({
-    //         recipes: []
-    //     })
-    //     let ing = e.target.alt;
-    //     let quick_api = `https://api.edamam.com/search?q=${ing}&app_id=${app_id}&app_key=${app_key}&count=20`
-    //     axios
-    //         .get(quick_api)
-    //         .then(response => {
-    //             this.setState({ recipes: response.data.hits });
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // }
 
     render() { 
-        this.props.recepieFadeIn();
 
         return ( 
             <div>

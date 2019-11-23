@@ -5,7 +5,6 @@ import Recipe from '../Recipe/Recipe';
 import RecentSearch from '../RecentSearch/RecentSearch';
 import './Search.css';
 import axios from 'axios';
-import $ from 'jquery';
 import {TweenMax} from "gsap";
 // import { Link } from 'react-router-dom';
 
@@ -77,15 +76,6 @@ class Search extends Component {
         });
     }
 
-    
-    recepieFadeIn = () => {
-        $(document).ready(function () {
-                $('.image-flip').each(function (index) {
-                    $(this).delay(400 * index).animate({ 'opacity': '1' }, 1000)
-                });
-        })
-
-    }
 
     fetchQuickLink = e => {
         e.preventDefault();
@@ -227,7 +217,7 @@ class Search extends Component {
                             </form>
                     </div>
                 </div>
-                <QuickLinks fetchQuickLink={this.fetchQuickLink} recepieFadeIn={this.recepieFadeIn} login={this.props.auth.login} />
+                <QuickLinks fetchQuickLink={this.fetchQuickLink} login={this.props.auth.login} />
                 {this.state.recipes.length === 0 && this.state.not_found === false ? <div className="soup-pot-loader">
                     <div className="can"></div>
                     <div className="can"></div>

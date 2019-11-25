@@ -6,6 +6,8 @@ import RecentSearch from '../RecentSearch/RecentSearch';
 import './Search.css';
 import axios from 'axios';
 import {TweenMax} from "gsap";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 // import { Link } from 'react-router-dom';
 
 let app_id = process.env.REACT_APP_YOUR_APP_ID;
@@ -170,6 +172,7 @@ class Search extends Component {
         // if(this.state.recipes.length === 0) {
         //     return <div>buu</div>
         // }
+        
         return (  
             <div>
                 {/* <Navigation /> */}
@@ -227,9 +230,12 @@ class Search extends Component {
                 <div className='recipes' id='search'>
                     {this.state.not_found === false ? this.state.recipes.map((recipe, index) => {
                         return (
-                                <div className='recipe-link' key={index}>
-                                  <Recipe recipeData={recipe.recipe} login={this.props.auth.login}/>
+                            <ReactCSSTransitionGroup transitionName="fade" key={index} transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+                                <div className='recipe-link' style={{ transitionDelay: `${index * 500}ms` }}>
+                                    <Recipe recipeData={recipe.recipe} key={index} login={this.props.auth.login} />
                                 </div>
+                            </ReactCSSTransitionGroup>
+
                                 )
                     }) 
                     : 

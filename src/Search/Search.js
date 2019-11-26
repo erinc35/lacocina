@@ -231,7 +231,7 @@ class Search extends Component {
                     {this.state.not_found === false ? this.state.recipes.map((recipe, index) => {
                         return (
                             <ReactCSSTransitionGroup transitionName="fade" key={index} transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-                                <div className='recipe-link' style={{ transitionDelay: `${index * 500}ms` }}>
+                                <div className='recipe-link' style={{ transitionDelay: `${index * 300}ms` }}>
                                     <Recipe recipeData={recipe.recipe} key={index} login={this.props.auth.login} />
                                 </div>
                             </ReactCSSTransitionGroup>

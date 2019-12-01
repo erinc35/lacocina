@@ -167,7 +167,7 @@ class Search extends Component {
     
 
     render() {       
-        // console.log(this.props.isAuthenticated)
+        // console.log(this.state.recipes)
         // this.recepieFadeIn();
         // if(this.state.recipes.length === 0) {
         //     return <div>buu</div>

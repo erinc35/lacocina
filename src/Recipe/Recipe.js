@@ -123,10 +123,10 @@ class Recipe extends Component {
         let labels = labelsArray.reduce((str, label) => {
             return str + label + ", "
         }, '').slice(0, -2)
-        // {data.ingredientLines ? }
+        console.log(data)
         let style1 = {
             height: "430px",
-            minHeight: "430px"
+            minHeight: "430px" 
         }
         let style2 = {
             height: "490px",
@@ -134,18 +134,27 @@ class Recipe extends Component {
         }
 
         return (  
-                <div className="">
-                <div className='recipe-card recipe-front' style={data.ingredientLines ? style2 : style1}>
-                    <img src={data.image || data.recipeImage} alt={data.label} className='recipe-img' />
-                    <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
-                        <strong><p className='recipe-name'>{data.name || data.label ||data.RecipeName}</p></strong>
-                        <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
-                        {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  : null}   
-                    </a>
-                    <i 
-                        onClick={(e) => this.handleLikeRecipe(e)} 
-                        className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
-                    </i>                           
+
+            <div className="image-flip" >
+                <div className="mainflip">
+                    <div className='recipe-card recipe-front frontside' style={data.ingredientLines ? style2 : style1}>
+                        <img src={data.image || data.recipeImage} alt={data.label} className='recipe-img' />
+                        <a href="#" onClick={() => window.open(`${data.url}`)} className="recipe-url">
+                            <strong><p className='recipe-name'>{data.name || data.label || data.RecipeName}</p></strong>
+                            <p className='back-item'><strong>Calories:</strong> {Math.round(data.calories)}</p>
+                            {labels ? <p className='back-item'><strong>Health labels:</strong> {labels}</p>  : null}   
+                        </a>
+                        <i 
+                            onClick={(e) => this.handleLikeRecipe(e)} 
+                            className={this.state.liked ? "fa fa-heart full-heart" : "fa fa-heart empty-heart"}>
+                        </i>                           
+                    </div>  
+                    <div className='recipe-card recipe-back backside'>
+                        <p className='recipe-source'><strong>Source:</strong> {data.source}</p>
+                        <p className='recipe-name'><strong>Ingredients:</strong></p>
+                        {data.ingredientLines.map((ing, ind) => {
+                            return <li key={ind} className='back-item'>{ing}</li>
+                        })}
                     </div>
 
                     {/* <div className="">
@@ -160,6 +169,7 @@ class Recipe extends Component {
                     </div> */}
 
                 </div>
+    </div>
         );
     }
 }

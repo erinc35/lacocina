@@ -64,9 +64,9 @@
     color :red;
 }
 
-.image-flip {
+/* .image-flip {
     opacity: 0;
-}
+} */
 
 .image-flip:hover .backside,
 .image-flip.hover .backside {
@@ -75,7 +75,7 @@
   -o-transform: rotateY(0deg);
   -ms-transform: rotateY(0deg);
   transform: rotateY(0deg);
-  /* border-radius: .25rem; */  
+  border-radius: .25rem;  
 }
 
 .image-flip:hover .frontside,
@@ -116,7 +116,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  /* background: white; */
+  background: white;
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
   -o-transform: rotateY(-180deg);

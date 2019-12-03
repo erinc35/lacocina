@@ -23,7 +23,8 @@
 .recipe-name{
     text-align: center;
     margin-bottom: 1%;
-    font-size: 0.8em;
+    margin-top: 5%;
+    font-size: 0.7em;
 }
 
 .recipe-source{
@@ -51,7 +52,7 @@
 
 .empty-heart {
     position: absolute;
-    top: 10px;
+    top: 285px;
     right: 10px;
     text-shadow: 1px 0px 0 #000, 0px -1px 0 #000, 0px -1px 0 #000, -1px 0px 0 #000, 0px 1px 0 #000;
     color :lightgray;
@@ -59,7 +60,7 @@
 
 .full-heart {
     position: absolute;
-    top: 10px;
+    top: 285px;
     right: 10px;
     color :red;
 }
@@ -112,6 +113,7 @@
 }
 
 .backside {
+  height:280px;
   width: 100%;
   position: absolute;
   top: 0;

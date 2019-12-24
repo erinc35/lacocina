@@ -64,7 +64,6 @@ class Recipe extends Component {
         this.getLikedRecipes();
         try {
             let recipesLiked = this.state.recipesLiked; //array of objects
-            console.log(recipesLiked)
             let recipe = recipesLiked.filter(recipe => {
                 return recipe.RecipeName === this.props.recipeData.label 
                 // || this.props.location.state.recipeData.name;
